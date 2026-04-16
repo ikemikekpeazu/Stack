@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct SavingsAppApp: App {
+    @StateObject var vm = SavingsViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(vm)
+            
         }
     }
 }
