@@ -16,16 +16,16 @@ struct SavingsListView: View {
             ForEach(vm.savings) { entry in
                 VStack(alignment: .leading) {
                     Text("$\(entry.amount, specifier: "%.2f")")
-                    Text(entry.date, style: .date)
+                    Text(entry.date ?? Date(), style: .date)
                         .font(.caption)
                     
                     
-                    Text(entry.category)
+                    Text(entry.category ?? "General")
                         .font(.caption2)
                     
                 }
             }
-            .onDelete(perform: vm.delete)
+            .onDelete(perform: vm.deleteSaving)
             .foregroundStyle(.blue)
         }
         .navigationTitle("Your Savings")

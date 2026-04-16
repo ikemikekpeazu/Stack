@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct SavingsAppApp: App {
+    let persistenceController = PersistenceController.shared
     @StateObject var vm = SavingsViewModel()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environmentObject(vm)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
         }
     }

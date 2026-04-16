@@ -8,9 +8,25 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreData
 
 class SavingsViewModel: ObservableObject {
-    @Published var savings: [SavingEntry] = []
+    @Published var savings: [SavingEntity] = []
+    private let container = PersistenceController.shared.container
+    
+    init() {
+        fetchSavings()
+    }
+    
+    func fetchSavings() {
+        let request = NSFetchRequest<SavingEntity>(entityName: "SavingEntity")
+        
+        do {
+            savings = try container.viewContext.fetch(request)
+        } catch {
+            print("Error fetching: \(error)")
+        }
+    }
     
     var totalSaved: Double {
         savings.reduce(0) { $0 + $1.amount }
@@ -18,30 +34,39 @@ class SavingsViewModel: ObservableObject {
         
     var thisWeekTotal: Double {
         let calendar = Calendar.current
+        let now = Date()
         return savings.filter {
-            calendar.isDate($0.date, equalTo: Date(), toGranularity: .weekOfYear)
+            
+            calendar.isDate($0.date ?? now, equalTo: now, toGranularity: .weekOfYear)
         }
         .reduce(0) { $0 + $1.amount }
     }
     
     
     func addSaving(amount: Double, category: String) {
-        let newEntry = SavingEntry(
-            amount: amount,
-            date: Date(),
-            category: category
-        )
-        savings.append(newEntry)
+        let newSaving = SavingEntity(context: container.viewContext)
+        newSaving.id = UUID().uuidString
+        newSaving.amount = amount
+        newSaving.category = category
+        newSaving.date = Date()
+
+        saveData()
     }
-    
-    func delete(at offsets: IndexSet) {
-        savings.remove(atOffsets: offsets)
+
+    func deleteSaving(at offsets: IndexSet) {
+        for index in offsets {
+            let entity = savings[index]
+            container.viewContext.delete(entity)
+        }
+        saveData()
     }
-    
-    // Not sure I need this
-    func update(entry: SavingEntry) {
-        if let index = savings.firstIndex(where: { $0.id == entry.id }) {
-            savings[index] = entry
+
+    private func saveData() {
+        do {
+            try container.viewContext.save()
+            fetchSavings() 
+        } catch {
+            print("Error saving: \(error)")
         }
     }
 }
