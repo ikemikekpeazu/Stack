@@ -14,27 +14,56 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            ZStack {
                 
-                Text("You have saved")
-                Text("$\(vm.totalSaved, specifier: "%.2f")")
-                    .font(.largeTitle)
+                // Background Layer
+                Color(Color.theme.background)
+                    .ignoresSafeArea()
                 
-                Text("This week: $\(vm.thisWeekTotal, specifier: "%.2f")")
-                HStack {
-                    Button("Add Savings") {
-                        showAddSheet = true
-                    }
+                // Content Layer
+                VStack(spacing: 20) {
+                    Text("You Have Saved")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    Text("$\(vm.totalSaved, specifier: "%.2f")")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
                     
-                    NavigationLink("View Savings") {
-                        SavingsListView()
-                            .environmentObject(vm)
+                    Text("This Week")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 100)
+                    HStack {
+                        Button {
+                            showAddSheet = true
+                        } label: {
+                            Text("Add Savings")
+                                .foregroundStyle(Color.white)
+                                .fontWeight(.semibold)
+                                .frame(width: 180, height: 50)
+                                .background(Color.theme.blue1)
+                                .cornerRadius(30)
+                                .padding(.leading, 10)
+                        }
+                        Spacer()
+                        NavigationLink {
+                            SavingsListView()
+                        } label: {
+                            Text("View Savings")
+                                .foregroundStyle(Color.white)
+                                .fontWeight(.semibold)
+                                .frame(width: 180, height: 50)
+                                .background(Color.theme.blue4)
+                                .cornerRadius(30)
+                                .padding(.trailing, 10)
+                        }
                     }
                 }
-                
-            }
-            .sheet(isPresented: $showAddSheet) {
-                AddSavingsView()
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+                .sheet(isPresented: $showAddSheet) {
+                    AddSavingsView()
+                }
             }
         }
     }
