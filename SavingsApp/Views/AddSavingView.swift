@@ -8,14 +8,14 @@
 import SwiftUI
 import Combine
 
-struct NumberEntryView: View {
+struct AddSavingView: View {
     @EnvironmentObject var vm: SavingsViewModel
     @Environment(\.dismiss) var dismiss
     @State private var amount: String = "0"
     @State private var amountEntered: Bool = false
     @State private var title: String = ""
     @State private var category: Category = .general
-    @State private var date: String = ""
+    @State private var date: Date = Date()
     
     // Grid configuration for the keypad
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
@@ -33,12 +33,13 @@ struct NumberEntryView: View {
                 Text("Enter Amount: ")
                     .font(.title2)
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.theme.accent)
 //                    .padding(.bottom, 5)
                 
                 // Amount Display
                 Text("$\(amount)")
                     .font(.system(size: 80, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color.theme.accent)
                 //                    .transition(.scale)
                 
                 if !amountEntered {
@@ -56,22 +57,28 @@ struct NumberEntryView: View {
                     Text("Title")
                         .font(.title3)
                         .fontWeight(.semibold)
-                    TextField("Insert Title", text: $title)
+//                        .frame(width: 85, alignment: .leading)
+                    TextField("Insert Title", text: $title, prompt: Text("Insert Title").foregroundStyle(.gray))
                         .font(.title3)
+//                        .foregroundStyle(title == "Untitled" ? .gray : .white)
+                    
                 }
                 HStack{
                     Text("Category")
                         .font(.title3)
                         .fontWeight(.semibold)
-//                    TextField("Insert Category", text: $category)
-//                        .font(.title3)
-                    Picker("Category", selection: $category){
+
+                    Picker("", selection: $category){
                         ForEach(Category.allCases, id: \.self) { category in
                             Text(category.rawValue).tag(category)
                         }
                     }
                     .pickerStyle(.menu)
-                    .tint(.gray)
+                    
+                    .labelsHidden()
+                    .tint(category == .general ? .gray : Color.theme.accent)
+                    .padding(.leading, -10)
+                    
                     
                     Spacer()
                 }
@@ -79,13 +86,16 @@ struct NumberEntryView: View {
                     Text("Date")
                         .font(.title3)
                         .fontWeight(.semibold)
-                    TextField("Insert Date", text: $date)
-                        .font(.title3)
+//                        .frame(width: 85, alignment: .leading)
+                    DatePicker("", selection: $date, displayedComponents: [.date])
+                        .labelsHidden()
+                        .tint(Color.theme.blue1)
+                    Spacer()
                 }
                 Button {
                     withAnimation {
                         if let value = Double(amount) {
-                            vm.addSaving(amount: value, category: category)
+                            vm.addSaving(amount: value, category: category, date: date)
                             dismiss()
                         }
                     }
@@ -104,7 +114,7 @@ struct NumberEntryView: View {
                         
                 }
             }
-            .offset(y: amountEntered ? -280 : -50)
+            .offset(y: amountEntered ? -275 : -50)
             .opacity(amountEntered ? 1 : 0)
             .padding(.horizontal)
             
@@ -131,7 +141,7 @@ struct NumberEntryView: View {
     }
 }
 
-extension NumberEntryView {
+extension AddSavingView {
     private var keypad: some View {
         LazyVGrid(columns: columns, spacing: 30) {
             ForEach(keys, id: \.self) { key in
@@ -141,9 +151,11 @@ extension NumberEntryView {
                     if key == "delete.left" {
                         Image(systemName: key)
                             .font(.title)
+                            .foregroundStyle(Color.theme.accent)
                     } else {
                         Text(key)
                             .font(.system(size: 30, weight: .medium))
+                            .foregroundStyle(Color.theme.accent)
                     }
                 }
                 .foregroundColor(.white)
@@ -184,5 +196,6 @@ extension NumberEntryView {
 
 
 #Preview {
-    NumberEntryView()
+    AddSavingView()
+        .environmentObject(SavingsViewModel())
 }

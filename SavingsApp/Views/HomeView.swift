@@ -25,13 +25,15 @@ struct HomeView: View {
                     Text("You Have Saved")
                         .font(.title)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color.theme.accent)
                     Text("$\(vm.totalSaved, specifier: "%.2f")")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    
+                        .foregroundStyle(Color.theme.accent)
                     Text("This Week")
                         .font(.title)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color.theme.accent)
                         .padding(.bottom, 100)
                     HStack {
                         Button {
@@ -62,7 +64,7 @@ struct HomeView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .sheet(isPresented: $showAddSheet) {
-                    NumberEntryView()
+                    AddSavingView()
                 }
             }
         }
