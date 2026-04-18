@@ -43,9 +43,10 @@ class SavingsViewModel: ObservableObject {
     }
     
     
-    func addSaving(amount: Double, category: Category, date: Date) {
+    func addSaving(amount: Double, title: String, category: Category, date: Date) {
         let newSaving = SavingEntity(context: container.viewContext)
         newSaving.id = UUID().uuidString
+        newSaving.title = title
         newSaving.amount = amount
         newSaving.category = category.rawValue
         newSaving.date = date

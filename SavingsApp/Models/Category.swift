@@ -12,10 +12,22 @@ enum Category: String, CaseIterable {
     
     case general = "General"
     case food = "Food"
-    case travel = "Travel"
+    case transportation = "Transportation"
     case clothes = "Clothes"
     case fun = "Fun"
     case subscriptions = "Subscriptions"
     case other = "Other"
+    
+    var iconName: String {
+        switch self {
+        case .general : "archivebox.fill"
+        case .food : "fork.knife"
+        case .transportation : "car.fill"
+        case .clothes : "tshirt.fill"
+        case .fun : "ticket.fill"
+        case .subscriptions : "repeat"
+        case .other : "ellipsis"
+        }
+    }
     
 }

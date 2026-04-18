@@ -95,7 +95,7 @@ struct AddSavingView: View {
                 Button {
                     withAnimation {
                         if let value = Double(amount) {
-                            vm.addSaving(amount: value, category: category, date: date)
+                            vm.addSaving(amount: value, title: title, category: category, date: date)
                             dismiss()
                         }
                     }
