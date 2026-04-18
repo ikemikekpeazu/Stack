@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct NumberEntryView: View {
+    @EnvironmentObject var vm: SavingsViewModel
+    @Environment(\.dismiss) var dismiss
     @State private var amount: String = "0"
     @State private var amountEntered: Bool = false
     @State private var title: String = ""
-    @State private var category: String = ""
+    @State private var category: Category = .general
     @State private var date: String = ""
     
     // Grid configuration for the keypad
@@ -40,7 +43,7 @@ struct NumberEntryView: View {
                 
                 if !amountEntered {
                     keypad
-                        .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity).animation(.easeIn(duration: 1)), removal: .move(edge: .top).combined(with: .opacity).animation(.easeIn(duration: 0.07))))
+                        .transition(.asymmetric(insertion: .move(edge: .top).combined(with: .opacity).animation(.easeIn(duration: 2)), removal: .move(edge: .top).combined(with: .opacity).animation(.easeIn(duration: 0.07))))
                 }
                 
                 Spacer()
@@ -51,19 +54,57 @@ struct NumberEntryView: View {
             VStack {
                 HStack{
                     Text("Title")
-                    Spacer()
+                        .font(.title3)
+                        .fontWeight(.semibold)
                     TextField("Insert Title", text: $title)
+                        .font(.title3)
                 }
                 HStack{
                     Text("Category")
-                    TextField("Insert Title", text: $category)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+//                    TextField("Insert Category", text: $category)
+//                        .font(.title3)
+                    Picker("Category", selection: $category){
+                        ForEach(Category.allCases, id: \.self) { category in
+                            Text(category.rawValue).tag(category)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .tint(.gray)
+                    
+                    Spacer()
                 }
                 HStack{
                     Text("Date")
+                        .font(.title3)
+                        .fontWeight(.semibold)
                     TextField("Insert Date", text: $date)
+                        .font(.title3)
+                }
+                Button {
+                    withAnimation {
+                        if let value = Double(amount) {
+                            vm.addSaving(amount: value, category: category)
+                            dismiss()
+                        }
+                    }
+                } label: {
+                    ZStack{
+                        Text("Add")
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.theme.blue4)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(25)
+                    .padding(.top)
+                    
+                        
                 }
             }
-            .offset(y: amountEntered ? -375 : -50)
+            .offset(y: amountEntered ? -280 : -50)
             .opacity(amountEntered ? 1 : 0)
             .padding(.horizontal)
             

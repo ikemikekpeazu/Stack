@@ -62,7 +62,7 @@ struct HomeView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .sheet(isPresented: $showAddSheet) {
-                    AddSavingsView()
+                    NumberEntryView()
                 }
             }
         }
