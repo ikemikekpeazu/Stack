@@ -32,8 +32,8 @@ struct SavingRowView: View {
                 .font(.system(.body, design: .rounded))
                         .fontWeight(.bold)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 15)
         
     }
 }

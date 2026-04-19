@@ -12,11 +12,24 @@ struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
     var body: some View {
     
-        List {
-            ForEach(vm.savings) { entity in
-                SavingRowView(savingEntity: entity)
+        ZStack {
+            // Background Layer
+            Color.theme.background.ignoresSafeArea()
+            // Content Layer
+            List {
+                ForEach(vm.savings) { entity in
+                    SavingRowView(savingEntity: entity)
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                        .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
+                        .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
+                }
+                .onDelete(perform: vm.deleteSaving)
             }
-            .onDelete(perform: vm.deleteSaving)
+            .scrollContentBackground(.hidden)
+            .listStyle(.plain)
+            
+            
         }
         
             
