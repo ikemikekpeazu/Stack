@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SavingsRowView: View {
+struct SavingRowView: View {
     let savingEntity: SavingEntity
     
     var body: some View {
@@ -39,5 +39,5 @@ struct SavingsRowView: View {
 }
 
 #Preview {
-    SavingsRowView(savingEntity: SavingEntity.example)
+    SavingRowView(savingEntity: SavingEntity.example)
 }

@@ -12,14 +12,18 @@ import CoreData
 
 class SavingsViewModel: ObservableObject {
     @Published var savings: [SavingEntity] = []
-    private let container = PersistenceController.shared.container
+    private let container: NSPersistentContainer
     
-    init() {
+    init(container: NSPersistentContainer = PersistenceController.shared.container) {
+        self.container = container
         fetchSavings()
     }
     
     func fetchSavings() {
         let request = NSFetchRequest<SavingEntity>(entityName: "SavingEntity")
+        
+        let sortDescriptor = NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)
+            request.sortDescriptors = [sortDescriptor]
         
         do {
             savings = try container.viewContext.fetch(request)
