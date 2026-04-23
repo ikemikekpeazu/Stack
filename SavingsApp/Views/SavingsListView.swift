@@ -10,6 +10,8 @@ import Combine
 
 struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
+    @State var showEditSheet = false
+    
     var body: some View {
     
         ZStack {
@@ -23,13 +25,25 @@ struct SavingsListView: View {
                         .listRowInsets(EdgeInsets())
                         .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
                         .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
+                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                            Button {
+                                vm.selectedSaving = entity
+                                showEditSheet.toggle()
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .tint(.orange)
+                        }
                 }
                 .onDelete(perform: vm.deleteSaving)
             }
             .scrollContentBackground(.hidden)
             .listStyle(.plain)
-            
-            
+        }
+        .sheet(isPresented: $showEditSheet) {
+            if let selectedSaving = vm.selectedSaving {
+                EditSavingView(savingEntity: selectedSaving)
+            }
         }
         
             

@@ -12,6 +12,7 @@ import CoreData
 
 class SavingsViewModel: ObservableObject {
     @Published var savings: [SavingEntity] = []
+    @Published var selectedSaving: SavingEntity? = nil
     private let container: NSPersistentContainer
     
     init(container: NSPersistentContainer = PersistenceController.shared.container) {
@@ -54,6 +55,14 @@ class SavingsViewModel: ObservableObject {
         newSaving.amount = amount
         newSaving.category = category.rawValue
         newSaving.date = date
+
+        saveData()
+    }
+    func updateSaving(entity: SavingEntity, amount: Double, title: String, category: Category, date: Date) {
+        entity.title = title
+        entity.amount = amount
+        entity.category = category.rawValue
+        entity.date = date
 
         saveData()
     }

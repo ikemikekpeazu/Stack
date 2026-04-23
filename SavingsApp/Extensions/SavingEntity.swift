@@ -15,7 +15,7 @@ extension SavingEntity {
         let entity = SavingEntity(context: context)
         entity.id = UUID().uuidString
         entity.title = "Title"
-        entity.amount = 25.0
+        entity.amount = 25.00
         entity.category = "Transportation"
         entity.date = Date()
         return entity
