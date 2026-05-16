@@ -7,10 +7,17 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
     @State var showEditSheet = false
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)],
+        animation: .default
+    )
+    private var savings: FetchedResults<SavingEntity>
     
     var body: some View {
     
@@ -19,7 +26,7 @@ struct SavingsListView: View {
             Color.theme.background.ignoresSafeArea()
             // Content Layer
             List {
-                ForEach(vm.savings) { entity in
+                ForEach(savings) { entity in
                     SavingRowView(savingEntity: entity)
                         .listRowBackground(Color.clear)
                         .listRowInsets(EdgeInsets())
@@ -35,7 +42,12 @@ struct SavingsListView: View {
                             .tint(.orange)
                         }
                 }
-                .onDelete(perform: vm.deleteSaving)
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        let entity = savings[index]
+                        vm.deleteSaving(entity: entity)
+                    }
+                }
             }
             .scrollContentBackground(.hidden)
             .listStyle(.plain)
@@ -52,28 +64,6 @@ struct SavingsListView: View {
 }
 
 #Preview {
-    let previewController = PersistenceController.preview
-    
-    let previewVM = SavingsViewModel(container: previewController.container)
-    return SavingsListView()
-        .environmentObject(previewVM)
+    SavingsListView()
+        .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
 }
-
-//
-//List {
-//    ForEach(vm.savings) { entry in
-//        VStack(alignment: .leading) {
-//            Text("$\(entry.amount, specifier: "%.2f")")
-//            Text(entry.date ?? Date(), style: .date)
-//                .font(.caption)
-//            
-//            
-//            Text(entry.category ?? "General")
-//                .font(.caption2)
-//            
-//        }
-//    }
-//    .onDelete(perform: vm.deleteSaving)
-//    .foregroundStyle(.blue)
-//}
-//.navigationTitle("Your Savings")

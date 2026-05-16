@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct EditSavingView: View {
     @EnvironmentObject var vm: SavingsViewModel
@@ -209,5 +210,5 @@ extension EditSavingView {
 
 #Preview {
     EditSavingView(savingEntity: SavingEntity.example)
-        .environmentObject(SavingsViewModel())
+        .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
 }

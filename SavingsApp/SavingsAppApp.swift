@@ -11,7 +11,7 @@ import CoreData
 @main
 struct SavingsAppApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject var vm = SavingsViewModel()
+    @StateObject var vm = SavingsViewModel(context: PersistenceController.shared.container.viewContext)
     
     var body: some Scene {
         WindowGroup {

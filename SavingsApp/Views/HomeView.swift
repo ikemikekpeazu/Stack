@@ -7,10 +7,19 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct HomeView: View {
     @EnvironmentObject var vm: SavingsViewModel
     @State private var showAddSheet = false
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)]
+    ) private var savings: FetchedResults<SavingEntity>
+    
+    var totalSaved: Double {
+        savings.reduce(0) { $0 + $1.amount }
+    }
     
     var body: some View {
         NavigationStack {
@@ -26,7 +35,7 @@ struct HomeView: View {
                         .font(.title)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.theme.accent)
-                    Text("$\(vm.totalSaved, specifier: "%.2f")")
+                    Text("$\(totalSaved, specifier: "%.2f")")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.theme.accent)
@@ -73,5 +82,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(SavingsViewModel())
+        .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
 }
