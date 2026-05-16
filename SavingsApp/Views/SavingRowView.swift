@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SavingRowView: View {
-    let savingEntity: SavingEntity
+    
+    @ObservedObject var savingEntity: SavingEntity
+    
     
     var body: some View {
         HStack (spacing: 16) {

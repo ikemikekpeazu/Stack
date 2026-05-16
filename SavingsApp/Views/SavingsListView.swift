@@ -35,7 +35,7 @@ struct SavingsListView: View {
                         .swipeActions(edge: .leading, allowsFullSwipe: false) {
                             Button {
                                 vm.selectedSaving = entity
-                                showEditSheet.toggle()
+
                             } label: {
                                 Label("Edit", systemImage: "pencil")
                             }
@@ -52,11 +52,10 @@ struct SavingsListView: View {
             .scrollContentBackground(.hidden)
             .listStyle(.plain)
         }
-        .sheet(isPresented: $showEditSheet) {
-            if let selectedSaving = vm.selectedSaving {
-                EditSavingView(savingEntity: selectedSaving)
-            }
+        .sheet(item: $vm.selectedSaving) { saving in
+            EditSavingView(savingEntity: saving)
         }
+
         
             
         
