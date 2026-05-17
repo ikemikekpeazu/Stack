@@ -26,7 +26,8 @@ struct HomeView: View {
             ZStack {
                 
                 // Background Layer
-                Color(Color.theme.background)
+//                Color(Color.theme.background)
+                Color.theme.background
                     .ignoresSafeArea()
                 
                 // Content Layer
@@ -70,7 +71,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                .scrollContentBackground(.hidden)
+//                .scrollContentBackground(.hidden)
                 .background(Color.clear)
                 .sheet(isPresented: $showAddSheet) {
                     AddSavingView()
@@ -83,4 +84,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
         .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

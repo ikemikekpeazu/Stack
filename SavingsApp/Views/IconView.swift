@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IconView: View {
-    let savingsEntity: SavingEntity
+    @ObservedObject var savingsEntity: SavingEntity
     
     var body: some View {
         let category = Category(rawValue: savingsEntity.category ?? "") ?? .general

@@ -11,7 +11,7 @@ import CoreData
 
 struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
-    @State var showEditSheet = false
+//    @State var showEditSheet = false
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)],
@@ -65,4 +65,6 @@ struct SavingsListView: View {
 #Preview {
     SavingsListView()
         .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    
 }
