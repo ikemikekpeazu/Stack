@@ -19,38 +19,86 @@ struct SavingsListView: View {
     )
     private var savings: FetchedResults<SavingEntity>
     
+    var totalSaved: Double {
+        savings.reduce(0) { $0 + $1.amount }
+    }
+    
+    @State var searchText: String = ""
+    
     var body: some View {
     
         ZStack {
             // Background Layer
-            Color.theme.background.ignoresSafeArea()
+            Color.theme.blue1.ignoresSafeArea()
             // Content Layer
-            List {
-                ForEach(savings) { entity in
-                    SavingRowView(savingEntity: entity)
-                        .listRowBackground(Color.clear)
-                        .listRowInsets(EdgeInsets())
-                        .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
-                        .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
-                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                            Button {
-                                vm.selectedSaving = entity
-
-                            } label: {
-                                Label("Edit", systemImage: "pencil")
-                            }
-                            .tint(.orange)
-                        }
+            
+            VStack {
+                HStack {
+                    Text("$\(totalSaved, specifier: "%.2f")")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
+                    Spacer()
+                    Text("This Month")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
                 }
-                .onDelete { indexSet in
-                    for index in indexSet {
-                        let entity = savings[index]
-                        vm.deleteSaving(entity: entity)
+                .padding(.horizontal, 20)
+                .frame(height: 30)
+                .background(Color.theme.blue1)
+                
+                VStack {
+                    HStack {
+                        Text("Savings")
+                            .font(.title)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text("Sort")
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    .cornerRadius(50)
+                    SearchBarView(searchText: $searchText)
+                        .padding(.horizontal, 10)
+                    List {
+                        ForEach(savings) { entity in
+                            SavingRowView(savingEntity: entity)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                                .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
+                                .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
+                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                    Button {
+                                        vm.selectedSaving = entity
+                                        
+                                    } label: {
+                                        Label("Edit", systemImage: "pencil")
+                                    }
+                                    .tint(.orange)
+                                }
+                        }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let entity = savings[index]
+                                vm.deleteSaving(entity: entity)
+                            }
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .listStyle(.plain)
                 }
+                .background(Color.theme.background2)
+                .clipShape(
+                    UnevenRoundedRectangle(
+                        topLeadingRadius: 20,
+                        bottomLeadingRadius: 0,
+                        bottomTrailingRadius: 0,
+                        topTrailingRadius: 20
+                    )
+                )
+                .ignoresSafeArea()
             }
-            .scrollContentBackground(.hidden)
-            .listStyle(.plain)
         }
         .sheet(item: $vm.selectedSaving) { saving in
             EditSavingView(savingEntity: saving)
