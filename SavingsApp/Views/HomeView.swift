@@ -21,6 +21,10 @@ struct HomeView: View {
         savings.reduce(0) { $0 + $1.amount }
     }
     
+    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
+    
+    @State private var dateFilter: DateFilter = DateFilter.week
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -40,11 +44,32 @@ struct HomeView: View {
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.theme.accent)
-                    Text("This Week")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.theme.accent)
-                        .padding(.bottom, 100)
+                    
+                    
+                    Menu {
+                        ForEach(homeFilters, id: \.self) { filter in
+                            Button(filter.title) {
+//                                withAnimation(.easeInOut(duration: 0.2)) {
+//                                    dateFilter = filter
+//                                }
+                                dateFilter = filter
+                                
+                            }
+                        }
+                        
+                    } label: {
+                        HStack {
+                            Text(dateFilter.title)
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.theme.accent)
+                            Image(systemName: "chevron.down")
+                        }
+                        .frame(minWidth: 300)
+                        
+                    }
+                    .padding(.bottom, 100)
+                    
                     HStack {
                         Button {
                             showAddSheet = true
