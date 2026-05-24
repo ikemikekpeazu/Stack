@@ -82,7 +82,7 @@ struct EditSavingView: View {
                         .fontWeight(.semibold)
 
                     Picker("", selection: $category){
-                        ForEach(Category.allCases, id: \.self) { category in
+                        ForEach(vm.mainCategories, id: \.self) { category in
                             Text(category.rawValue).tag(category)
                         }
                     }

@@ -29,8 +29,9 @@ struct SavingsListView: View {
             .reduce(0) { $0 + $1.amount }
     }
     
-    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
+//    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
     @State private var dateFilter: DateFilter = DateFilter.week
+    @State private var categoryFilter: Category = Category.allCategories
     
     @State var searchText: String = ""
     
@@ -101,7 +102,32 @@ struct SavingsListView: View {
                             .font(.title)
                             .fontWeight(.semibold)
                         Spacer()
-                        Text("Sort")
+//                        Text("All Categories")
+//                            .font(.system(size: 14, weight: .medium))
+                        Menu {
+                            ForEach(Category.allCases, id: \.self) { filter in
+                                Button(filter.rawValue) {
+    //                                withAnimation() {
+    //                                    dateFilter = filter
+    //                                }
+                                    categoryFilter = filter
+                                }
+                            }
+                            
+                        } label: {
+                            HStack {
+                                Text(categoryFilter.rawValue)
+    //                                .font(.headline)
+    //                                .fontWeight(.bold)
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundStyle(Color.theme.accent)
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(Color.theme.blue4)
+                                
+                            }
+                            .frame(minWidth: 200, alignment: .trailing)
+                            
+                        }
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)

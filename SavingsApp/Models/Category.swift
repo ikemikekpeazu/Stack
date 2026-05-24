@@ -10,6 +10,7 @@ import SwiftUI
 
 enum Category: String, CaseIterable {
     
+    case allCategories = "All Categories"
     case general = "General"
     case food = "Food"
     case transportation = "Transportation"
@@ -17,6 +18,7 @@ enum Category: String, CaseIterable {
     case fun = "Fun"
     case subscriptions = "Subscriptions"
     case other = "Other"
+    
     
     var iconName: String {
         switch self {
@@ -27,6 +29,7 @@ enum Category: String, CaseIterable {
         case .fun : "ticket.fill"
         case .subscriptions : "repeat"
         case .other : "ellipsis"
+        case .allCategories : ""
         }
     }
     

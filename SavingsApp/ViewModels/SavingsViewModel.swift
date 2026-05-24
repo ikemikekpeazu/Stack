@@ -17,7 +17,9 @@ class SavingsViewModel: ObservableObject {
     @Published var endDate: Date = Date()
     
     let context: NSManagedObjectContext
+    let mainCategories: [Category] = [.general, .food, .transportation, .clothes, .fun, .subscriptions, .other]
     
+
 
     
     init(context: NSManagedObjectContext) {

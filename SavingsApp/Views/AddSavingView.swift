@@ -21,6 +21,8 @@ struct AddSavingView: View {
     // Grid configuration for the keypad
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "•", "0", "delete.left"]
+    
+
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -70,7 +72,7 @@ struct AddSavingView: View {
                         .fontWeight(.semibold)
 
                     Picker("", selection: $category){
-                        ForEach(Category.allCases, id: \.self) { category in
+                        ForEach(vm.mainCategories, id: \.self) { category in
                             Text(category.rawValue).tag(category)
                         }
                     }
