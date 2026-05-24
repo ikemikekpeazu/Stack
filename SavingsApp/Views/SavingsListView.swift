@@ -23,6 +23,9 @@ struct SavingsListView: View {
         savings.reduce(0) { $0 + $1.amount }
     }
     
+    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
+    @State private var dateFilter: DateFilter = DateFilter.week
+    
     @State var searchText: String = ""
     
     var body: some View {
@@ -39,10 +42,33 @@ struct SavingsListView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(Color.white)
                     Spacer()
-                    Text("This Month")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.white)
+//                    Text("This Month")
+//                        .font(.title)
+//                        .fontWeight(.semibold)
+//                        .foregroundStyle(Color.white)
+                    Menu {
+                        ForEach(homeFilters, id: \.self) { filter in
+                            Button(filter.title) {
+//                                withAnimation() {
+//                                    dateFilter = filter
+//                                }
+                                dateFilter = filter
+                                
+                            }
+                        }
+                        
+                    } label: {
+                        HStack {
+                            Text(dateFilter.title)
+                                .font(.title)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.white)
+                            Image(systemName: "chevron.down")
+                                .foregroundStyle(Color.theme.blue4)
+                        }
+                        .frame(minWidth: 200, alignment: .trailing)
+                        
+                    }
                 }
                 .padding(.horizontal, 20)
                 .frame(height: 30)
