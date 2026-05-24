@@ -19,8 +19,14 @@ struct SavingsListView: View {
     )
     private var savings: FetchedResults<SavingEntity>
     
+//    var totalSaved: Double {
+//        savings.reduce(0) { $0 + $1.amount }
+//    }
+    
     var totalSaved: Double {
-        savings.reduce(0) { $0 + $1.amount }
+        savings
+            .filter { isDate(date: $0.date, filter: dateFilter) }
+            .reduce(0) { $0 + $1.amount }
     }
     
     let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
@@ -133,6 +139,27 @@ struct SavingsListView: View {
         
             
         
+    }
+    
+    func isDate(date: Date?, filter: DateFilter) -> Bool {
+        guard let date = date else { return false }
+        let calendar = Calendar.current
+        let now = Date()
+        
+        switch filter {
+        case .today:
+            return calendar.isDateInToday(date)
+        case .week:
+            return calendar.isDate(date, equalTo: now, toGranularity: .weekOfYear)
+        case .month:
+            return calendar.isDate(date, equalTo: now, toGranularity: .month)
+        case .year:
+            return calendar.isDate(date, equalTo: now, toGranularity: .year)
+        case .total:
+            return true
+        default:
+            return true
+        }
     }
 }
 
