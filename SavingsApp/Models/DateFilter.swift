@@ -8,17 +8,14 @@
 import Foundation
 import SwiftUI
 
-enum DateFilter: Hashable {
+enum DateFilter: Hashable, CaseIterable {
     case today
     case week
     case month
     case year
     case total
     
-    case specificMonth(Date)
-    case specificYear(Int)
-    
-    case customRange(start: Date, end: Date)
+    case customRange
     
     var title: String {
         switch self {
@@ -37,11 +34,6 @@ enum DateFilter: Hashable {
         case .total:
             return "Total"
 
-        case .specificMonth(let date):
-            return date.formatted(.dateTime.month(.wide).year())
-
-        case .specificYear(let year):
-            return "\(year)"
 
         case .customRange:
             return "Custom Range"

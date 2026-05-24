@@ -13,6 +13,9 @@ import CoreData
 class SavingsViewModel: ObservableObject {
 
     @Published var selectedSaving: SavingEntity? = nil
+    @Published var startDate: Date = Date()
+    @Published var endDate: Date = Date()
+    
     let context: NSManagedObjectContext
     
 

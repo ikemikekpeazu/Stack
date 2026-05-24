@@ -11,7 +11,7 @@ import CoreData
 
 struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
-//    @State var showEditSheet = false
+    @State var showEditDateSheet = false
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)],
@@ -53,12 +53,15 @@ struct SavingsListView: View {
 //                        .fontWeight(.semibold)
 //                        .foregroundStyle(Color.white)
                     Menu {
-                        ForEach(homeFilters, id: \.self) { filter in
+                        ForEach(DateFilter.allCases, id: \.self) { filter in
                             Button(filter.title) {
 //                                withAnimation() {
 //                                    dateFilter = filter
 //                                }
                                 dateFilter = filter
+                                if dateFilter == .customRange {
+                                    showEditDateSheet = true
+                                }
                                 
                             }
                         }
@@ -134,6 +137,9 @@ struct SavingsListView: View {
         }
         .sheet(item: $vm.selectedSaving) { saving in
             EditSavingView(savingEntity: saving)
+        }
+        .sheet(isPresented: $showEditDateSheet) {
+            
         }
 
         
