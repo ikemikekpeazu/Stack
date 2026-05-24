@@ -14,7 +14,6 @@ enum DateFilter: Hashable, CaseIterable {
     case month
     case year
     case total
-    
     case customRange
     
     var title: String {

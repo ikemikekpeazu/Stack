@@ -34,6 +34,17 @@ struct SavingsListView: View {
     
     @State var searchText: String = ""
     
+    var displayTitle: String {
+        switch dateFilter {
+            
+        case .customRange:
+            return "\(formattedDate(vm.startDate)) - \(formattedDate(vm.endDate))"
+        default:
+            return dateFilter.title
+            
+        }
+    }
+    
     var body: some View {
     
         ZStack {
@@ -68,9 +79,9 @@ struct SavingsListView: View {
                         
                     } label: {
                         HStack {
-                            Text(dateFilter.title)
-                                .font(.title)
-                                .fontWeight(.semibold)
+                            Text(displayTitle)
+                                .font(.headline)
+                                .fontWeight(.bold)
                                 .foregroundStyle(Color.white)
                             Image(systemName: "chevron.down")
                                 .foregroundStyle(Color.theme.blue4)
@@ -139,7 +150,8 @@ struct SavingsListView: View {
             EditSavingView(savingEntity: saving)
         }
         .sheet(isPresented: $showEditDateSheet) {
-            
+            EditDateView()
+                .presentationDetents([.height(400)])
         }
 
         
@@ -167,6 +179,13 @@ struct SavingsListView: View {
             return true
         }
     }
+    
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        return formatter.string(from: date)
+    }
+    
 }
 
 #Preview {

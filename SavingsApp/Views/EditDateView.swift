@@ -22,33 +22,37 @@ struct EditDateView: View {
             
             // Content Layer
             VStack(spacing: 50) {
-                Text("Enter Custom Range: ")
+                Text("Enter Custom Range:")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.theme.accent)
                     .padding(.bottom, -20)
-                HStack{
-                    Text("Start Date")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    DatePicker("", selection: $startDate, displayedComponents: [.date])
-                        .labelsHidden()
-                        .tint(Color.theme.blue1)
+                VStack(spacing: 50) {
+                    HStack{
+                        Text("Start Date")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        DatePicker("", selection: $vm.startDate, displayedComponents: [.date])
+                            .labelsHidden()
+                            .tint(Color.theme.blue1)
+                    }
+                    HStack{
+                        Text("End Date")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        Spacer()
+                        DatePicker("", selection: $vm.endDate, displayedComponents: [.date])
+                            .labelsHidden()
+                            .tint(Color.theme.blue1)
+                    }
                 }
-                HStack{
-                    Text("End Date")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    DatePicker("", selection: $endDate, displayedComponents: [.date])
-                        .labelsHidden()
-                        .tint(Color.theme.blue1)
-                }
+                .padding(.horizontal)
+                
                 Button {
                     withAnimation {
-                        vm.startDate = startDate
-                        vm.endDate = endDate
+//                        vm.startDate = startDate
+//                        vm.endDate = endDate
                         dismiss()
                     }
                 } label: {
@@ -63,12 +67,13 @@ struct EditDateView: View {
                     .cornerRadius(25)
                         
                 }
-                
+                .padding(.horizontal)
                 .padding(.bottom, 20)
             }
-            
+//            .frame(maxWidth: .infinity)
+//            .background(Color.white)
         }
-        .padding(.horizontal)
+        
     }
 }
 

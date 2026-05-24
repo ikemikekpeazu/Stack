@@ -31,7 +31,7 @@ struct AddSavingView: View {
                 
                 Spacer()
                     .frame(height: 100)
-                Text("Enter Amount: ")
+                Text("Enter Amount:")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.theme.accent)

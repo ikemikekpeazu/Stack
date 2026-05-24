@@ -43,7 +43,7 @@ struct EditSavingView: View {
                 
                 Spacer()
                     .frame(height: 100)
-                Text("Edit: ")
+                Text("Edit:")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.theme.accent)
