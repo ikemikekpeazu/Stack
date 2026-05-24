@@ -80,8 +80,9 @@ struct SavingsListView: View {
                     } label: {
                         HStack {
                             Text(displayTitle)
-                                .font(.headline)
-                                .fontWeight(.bold)
+//                                .font(.headline)
+//                                .fontWeight(.bold)
+                                .font(.system(size: 18, weight: .semibold))
                                 .foregroundStyle(Color.white)
                             Image(systemName: "chevron.down")
                                 .foregroundStyle(Color.theme.blue4)
@@ -175,8 +176,17 @@ struct SavingsListView: View {
             return calendar.isDate(date, equalTo: now, toGranularity: .year)
         case .total:
             return true
-        default:
-            return true
+        case .customRange:
+//            return vm.startDate <= date && vm.endDate >= date
+            let start = calendar.startOfDay(for: vm.startDate)
+            let end = calendar.date(
+                bySettingHour: 23,
+                minute: 59,
+                second: 59,
+                of: vm.endDate
+            )!
+            
+            return date >= start && date <= end
         }
     }
     
