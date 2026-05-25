@@ -15,6 +15,9 @@ class SavingsViewModel: ObservableObject {
     @Published var selectedSaving: SavingEntity? = nil
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
+    @Published var homeDateFilter: DateFilter = DateFilter.week
+    @Published var listDateFilter: DateFilter = DateFilter.week
+    @Published var categoryFilter: Category = Category.allCategories
     
     let context: NSManagedObjectContext
     let mainCategories: [Category] = [.general, .food, .transportation, .clothes, .fun, .subscriptions, .other]

@@ -19,30 +19,35 @@ struct SavingsListView: View {
     )
     private var savings: FetchedResults<SavingEntity>
     
-//    var totalSaved: Double {
-//        savings.reduce(0) { $0 + $1.amount }
-//    }
+    //    var totalSaved: Double {
+    //        savings.reduce(0) { $0 + $1.amount }
+    //    }
+    private var filteredSavings: [SavingEntity] {
+        savings
+            .filter { isDate(date: $0.date, filter: vm.listDateFilter) }
+            .filter { isCategory(category: $0.category, filter: vm.categoryFilter) }
+    }
     
     var totalSaved: Double {
         savings
-            .filter { isDate(date: $0.date, filter: dateFilter) }
-            .filter { isCategory(category: $0.category, filter: categoryFilter) }
+            .filter { isDate(date: $0.date, filter: vm.listDateFilter) }
+            .filter { isCategory(category: $0.category, filter: vm.categoryFilter) }
             .reduce(0) { $0 + $1.amount }
     }
     
 //    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
-    @State private var dateFilter: DateFilter = DateFilter.week
-    @State private var categoryFilter: Category = Category.allCategories
+//    @State private var dateFilter: DateFilter = DateFilter.week
+//    @State private var categoryFilter: Category = Category.allCategories
     
     @State var searchText: String = ""
     
     var displayTitle: String {
-        switch dateFilter {
+        switch vm.listDateFilter {
             
         case .customRange:
             return "\(formattedDate(vm.startDate)) - \(formattedDate(vm.endDate))"
         default:
-            return dateFilter.title
+            return vm.listDateFilter.title
             
         }
     }
@@ -68,11 +73,11 @@ struct SavingsListView: View {
                     Menu {
                         ForEach(DateFilter.allCases, id: \.self) { filter in
                             Button(filter.title) {
-//                                withAnimation() {
-//                                    dateFilter = filter
-//                                }
-                                dateFilter = filter
-                                if dateFilter == .customRange {
+                                withAnimation() {
+                                    vm.listDateFilter = filter
+                                }
+//                                dateFilter = filter
+                                if vm.listDateFilter == .customRange {
                                     showEditDateSheet = true
                                 }
                                 
@@ -108,16 +113,16 @@ struct SavingsListView: View {
                         Menu {
                             ForEach(Category.allCases, id: \.self) { filter in
                                 Button(filter.rawValue) {
-    //                                withAnimation() {
-    //                                    dateFilter = filter
-    //                                }
-                                    categoryFilter = filter
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        vm.categoryFilter = filter
+                                    }
+//                                    categoryFilter = filter
                                 }
                             }
                             
                         } label: {
                             HStack {
-                                Text(categoryFilter.rawValue)
+                                Text(vm.categoryFilter.rawValue)
     //                                .font(.headline)
     //                                .fontWeight(.bold)
                                     .font(.system(size: 14, weight: .medium))
@@ -136,7 +141,7 @@ struct SavingsListView: View {
                     SearchBarView(searchText: $searchText)
                         .padding(.horizontal, 10)
                     List {
-                        ForEach(savings) { entity in
+                        ForEach(filteredSavings) { entity in
                             SavingRowView(savingEntity: entity)
                                 .listRowBackground(Color.clear)
                                 .listRowInsets(EdgeInsets())

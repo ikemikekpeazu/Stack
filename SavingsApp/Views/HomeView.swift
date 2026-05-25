@@ -19,13 +19,13 @@ struct HomeView: View {
     
     var totalSaved: Double {
         savings
-            .filter { isDate(date: $0.date, filter: dateFilter) }
+            .filter { isDate(date: $0.date, filter: vm.homeDateFilter) }
             .reduce(0) { $0 + $1.amount }
     }
     
     let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
     
-    @State private var dateFilter: DateFilter = DateFilter.week
+//    @State private var dateFilter: DateFilter = DateFilter.week
     
     var body: some View {
         NavigationStack {
@@ -54,14 +54,14 @@ struct HomeView: View {
 //                                withAnimation() {
 //                                    dateFilter = filter
 //                                }
-                                dateFilter = filter
+                                vm.homeDateFilter = filter
                                 
                             }
                         }
                         
                     } label: {
                         HStack {
-                            Text(dateFilter.title)
+                            Text(vm.homeDateFilter.title)
                                 .font(.title)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.theme.accent)
