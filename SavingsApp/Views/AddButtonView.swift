@@ -23,7 +23,7 @@ struct AddButtonView: View {
     //        .frame(maxWidth: 130)
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .background(Color.theme.blue4)
+            .background(Color.theme.blue1)
             .foregroundColor(Color.white)
             .cornerRadius(25)
 //            .shadow(color: Color.theme.blue4.opacity(0.5), radius: 6)
