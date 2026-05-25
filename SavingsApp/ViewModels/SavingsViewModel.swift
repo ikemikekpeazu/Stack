@@ -18,6 +18,7 @@ class SavingsViewModel: ObservableObject {
     @Published var homeDateFilter: DateFilter = DateFilter.week
     @Published var listDateFilter: DateFilter = DateFilter.week
     @Published var categoryFilter: Category = Category.allCategories
+    @Published var searchText: String = ""
     
     let context: NSManagedObjectContext
     let mainCategories: [Category] = [.general, .food, .transportation, .clothes, .fun, .subscriptions, .other]

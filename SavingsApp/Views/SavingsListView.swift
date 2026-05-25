@@ -26,12 +26,30 @@ struct SavingsListView: View {
         savings
             .filter { isDate(date: $0.date, filter: vm.listDateFilter) }
             .filter { isCategory(category: $0.category, filter: vm.categoryFilter) }
+            .filter { saving in
+            
+                if vm.searchText.isEmpty {
+                    return true
+                }
+                
+                return saving.title?.localizedCaseInsensitiveContains(vm.searchText) ?? false
+                
+            }
     }
     
     var totalSaved: Double {
         savings
             .filter { isDate(date: $0.date, filter: vm.listDateFilter) }
             .filter { isCategory(category: $0.category, filter: vm.categoryFilter) }
+            .filter { saving in
+            
+                if vm.searchText.isEmpty {
+                    return true
+                }
+                
+                return saving.title?.localizedCaseInsensitiveContains(vm.searchText) ?? false
+                
+            }
             .reduce(0) { $0 + $1.amount }
     }
     
@@ -39,7 +57,7 @@ struct SavingsListView: View {
 //    @State private var dateFilter: DateFilter = DateFilter.week
 //    @State private var categoryFilter: Category = Category.allCategories
     
-    @State var searchText: String = ""
+//    @State var searchText: String = ""
     
     var displayTitle: String {
         switch vm.listDateFilter {
@@ -138,7 +156,7 @@ struct SavingsListView: View {
                     .padding(.horizontal, 20)
                     .padding(.vertical, 10)
                     .cornerRadius(50)
-                    SearchBarView(searchText: $searchText)
+                    SearchBarView(searchText: $vm.searchText)
                         .padding(.horizontal, 10)
                     List {
                         ForEach(filteredSavings) { entity in
