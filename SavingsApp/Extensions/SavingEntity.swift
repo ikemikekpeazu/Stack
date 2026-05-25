@@ -16,7 +16,7 @@ extension SavingEntity {
         entity.id = UUID().uuidString
         entity.title = "Title"
         entity.amount = 25.00
-        entity.category = "Transportation"
+        entity.category = "General"
         entity.date = Date()
         return entity
     }

@@ -22,7 +22,7 @@ enum Category: String, CaseIterable {
     
     var iconName: String {
         switch self {
-        case .general : "archivebox.fill"
+        case .general : "tray.full.fill"
         case .food : "fork.knife"
         case .transportation : "car.fill"
         case .clothes : "tshirt.fill"

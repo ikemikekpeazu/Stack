@@ -12,6 +12,7 @@ import CoreData
 struct SavingsListView: View {
     @EnvironmentObject var vm: SavingsViewModel
     @State var showEditDateSheet = false
+    @State var showAddSheet = false
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SavingEntity.date, ascending: false)],
@@ -203,6 +204,12 @@ struct SavingsListView: View {
         .sheet(isPresented: $showEditDateSheet) {
             EditDateView()
                 .presentationDetents([.height(400)])
+        }
+        .sheet(isPresented: $showAddSheet) {
+            AddSavingView()
+        }
+        .overlay(alignment: .bottom) {
+            AddButtonView(showAddSheet: $showAddSheet)
         }
 
         
