@@ -26,6 +26,7 @@ struct SavingsListView: View {
     var totalSaved: Double {
         savings
             .filter { isDate(date: $0.date, filter: dateFilter) }
+            .filter { isCategory(category: $0.category, filter: categoryFilter) }
             .reduce(0) { $0 + $1.amount }
     }
     
@@ -222,6 +223,14 @@ struct SavingsListView: View {
         return formatter.string(from: date)
     }
     
+    func isCategory(category: String?, filter: Category) -> Bool {
+        guard let categoryString = category else { return false }
+        guard let category = Category(rawValue: categoryString) else { return false }
+        if filter == .allCategories {
+            return true
+        }
+        return category == filter
+    }
 }
 
 #Preview {
