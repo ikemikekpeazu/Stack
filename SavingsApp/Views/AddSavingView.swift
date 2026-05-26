@@ -30,7 +30,6 @@ struct AddSavingView: View {
             Color.theme.background.ignoresSafeArea()
             
             VStack {
-                
                 Spacer()
                     .frame(height: 100)
                 Text("Enter Amount:")
@@ -121,7 +120,22 @@ struct AddSavingView: View {
             .opacity(amountEntered ? 1 : 0)
             .padding(.horizontal)
             
+            
         }
+        .overlay(alignment: .topLeading) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.system(size: 22, weight: .medium))
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(width: 44, height: 44)
+                
+            }
+            .padding()
+            
+        }
+        
     }
 
     // Handles Key press logic

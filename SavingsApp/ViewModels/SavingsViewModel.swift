@@ -15,8 +15,8 @@ class SavingsViewModel: ObservableObject {
     @Published var selectedSaving: SavingEntity? = nil
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
-    @Published var homeDateFilter: DateFilter = DateFilter.week
-    @Published var listDateFilter: DateFilter = DateFilter.week
+    @Published var homeDateFilter: DateFilter = DateFilter.month
+    @Published var listDateFilter: DateFilter = DateFilter.total
     @Published var categoryFilter: Category = Category.allCategories
     @Published var searchText: String = ""
     

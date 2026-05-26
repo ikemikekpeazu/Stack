@@ -73,6 +73,19 @@ struct EditDateView: View {
 //            .frame(maxWidth: .infinity)
 //            .background(Color.white)
         }
+        .overlay(alignment: .topLeading) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.system(size: 22, weight: .medium))
+                    .foregroundStyle(Color.theme.accent)
+                    .frame(width: 44, height: 44)
+                
+            }
+            .padding()
+            
+        }
         
     }
 }
