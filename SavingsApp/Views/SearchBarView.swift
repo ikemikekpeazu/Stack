@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SearchBarView: View {
+    @EnvironmentObject var vm: SavingsViewModel
     @Binding var searchText: String
     @FocusState private var isSearching: Bool
     var body: some View {
@@ -19,8 +21,8 @@ struct SearchBarView: View {
                 .disableAutocorrection(true)
                 .onChange(of: searchText) { oldValue, newValue in
                     
-                    if newValue.count > 20 {
-                        searchText = String(newValue.prefix(20))
+                    if newValue.count > vm.titleCharacterLimit {
+                        searchText = String(newValue.prefix(vm.titleCharacterLimit))
                     }
                     
                 }
@@ -49,4 +51,5 @@ struct SearchBarView: View {
 
 #Preview {
     SearchBarView(searchText: .constant(""))
+        .environmentObject(SavingsViewModel(context: PersistenceController.preview.container.viewContext))
 }

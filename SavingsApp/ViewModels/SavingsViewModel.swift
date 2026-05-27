@@ -19,6 +19,7 @@ class SavingsViewModel: ObservableObject {
     @Published var listDateFilter: DateFilter = DateFilter.allTime
     @Published var categoryFilter: Category = Category.allCategories
     @Published var searchText: String = ""
+    var titleCharacterLimit = 20
     
     let context: NSManagedObjectContext
     let mainCategories: [Category] = [.general, .food, .transportation, .clothes, .fun, .subscriptions, .other]

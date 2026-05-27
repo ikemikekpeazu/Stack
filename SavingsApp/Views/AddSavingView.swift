@@ -64,8 +64,8 @@ struct AddSavingView: View {
                         .font(.title3)
                         .onChange(of: title) { oldValue, newValue in
                             
-                            if newValue.count > 20 {
-                                title = String(newValue.prefix(20))
+                            if newValue.count > vm.titleCharacterLimit {
+                                title = String(newValue.prefix(vm.titleCharacterLimit))
                             }
                             
                         }
