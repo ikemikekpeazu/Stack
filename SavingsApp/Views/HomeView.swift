@@ -45,6 +45,8 @@ struct HomeView: View {
                     Text("$\(totalSaved, specifier: "%.2f")")
                         .font(.largeTitle)
                         .monospacedDigit()
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
                         .fontWeight(.semibold)
                         .contentTransition(.numericText())
                         .animation(.spring(response: 0.35, dampingFraction: 0.8), value: totalSaved)
