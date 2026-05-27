@@ -97,7 +97,11 @@ struct AddSavingView: View {
                 Button {
                     withAnimation {
                         if let value = Double(amount) {
+                            if title == "" {
+                                title = "Untitled"
+                            }
                             vm.addSaving(amount: value, title: title, category: category, date: date)
+                            
                             dismiss()
                         }
                     }
