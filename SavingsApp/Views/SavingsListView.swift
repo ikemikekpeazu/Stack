@@ -82,8 +82,11 @@ struct SavingsListView: View {
                 HStack {
                     Text("$\(totalSaved, specifier: "%.2f")")
                         .font(.system(size: 34, weight: .bold))
+                        .monospacedDigit()
                         .minimumScaleFactor(0.7)
                         .lineLimit(1)
+                        .contentTransition(.numericText())
+                        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: totalSaved)
                         .foregroundStyle(Color.white)
                     Spacer()
 //                    Text("This Month")
