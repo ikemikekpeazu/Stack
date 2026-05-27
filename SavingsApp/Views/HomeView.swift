@@ -44,18 +44,18 @@ struct HomeView: View {
                         .foregroundStyle(Color.theme.accent)
                     Text("$\(totalSaved, specifier: "%.2f")")
                         .font(.largeTitle)
+                        .monospacedDigit()
                         .fontWeight(.semibold)
+                        .contentTransition(.numericText())
+                        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: totalSaved)
+//                        .animation(.easeInOut(duration: 0.2), value: totalSaved)
                         .foregroundStyle(Color.theme.accent)
                     
                     
                     Menu {
                         ForEach(homeFilters, id: \.self) { filter in
                             Button(filter.title) {
-//                                withAnimation() {
-//                                    dateFilter = filter
-//                                }
                                 vm.homeDateFilter = filter
-                                
                             }
                         }
                         
