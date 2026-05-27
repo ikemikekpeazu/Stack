@@ -78,6 +78,10 @@ struct SavingsListView: View {
             Color.theme.blue1.ignoresSafeArea()
             // Content Layer
             
+            
+            
+            
+            
             VStack {
                 HStack {
                     Text("$\(totalSaved, specifier: "%.2f")")
@@ -163,32 +167,51 @@ struct SavingsListView: View {
                     .cornerRadius(50)
                     SearchBarView(searchText: $vm.searchText)
                         .padding(.horizontal, 10)
-                    List {
-                        ForEach(filteredSavings) { entity in
-                            SavingRowView(savingEntity: entity)
-                                .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets())
-                                .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
-                                .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
-                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                                    Button {
-                                        vm.selectedSaving = entity
-                                        
-                                    } label: {
-                                        Label("Edit", systemImage: "pencil")
-                                    }
-                                    .tint(.orange)
+                    Group {
+                        if savings.isEmpty {
+                            EmptyStateView(imageName: "tray", title: "No items yet", subtitle: "No items yet")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else if filteredSavings.isEmpty && !vm.searchText.isEmpty {
+                            EmptyStateView(imageName: "magnifyingglass", title: "No search results", subtitle: "No search results")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .transition(.opacity)
+                        } else if filteredSavings.isEmpty && vm.searchText.isEmpty {
+                            EmptyStateView(imageName: "line.3.horizontal.decrease.circle", title: "Failed filtering", subtitle: "Failed filtering")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .transition(.opacity)
+                        } else {
+                            List {
+                                ForEach(filteredSavings) { entity in
+                                    SavingRowView(savingEntity: entity)
+                                        .listRowBackground(Color.clear)
+                                        .listRowInsets(EdgeInsets())
+                                        .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
+                                        .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
+                                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                            Button {
+                                                vm.selectedSaving = entity
+                                                
+                                            } label: {
+                                                Label("Edit", systemImage: "pencil")
+                                            }
+                                            .tint(.orange)
+                                        }
                                 }
-                        }
-                        .onDelete { indexSet in
-                            for index in indexSet {
-                                let entity = savings[index]
-                                vm.deleteSaving(entity: entity)
+                                .onDelete { indexSet in
+                                    for index in indexSet {
+                                        let entity = savings[index]
+                                        vm.deleteSaving(entity: entity)
+                                    }
+                                }
                             }
+                            .scrollContentBackground(.hidden)
+                            .listStyle(.plain)
                         }
                     }
-                    .scrollContentBackground(.hidden)
-                    .listStyle(.plain)
+//                    .animation(.default, value: vm.searchText)
+                    .animation(.default, value: filteredSavings.isEmpty)
+                    
+                    
                 }
                 .background(Color.theme.background2)
                 .clipShape(

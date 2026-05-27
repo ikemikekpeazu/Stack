@@ -20,10 +20,12 @@ struct SearchBarView: View {
                 .focused($isSearching)
                 .disableAutocorrection(true)
                 .onChange(of: searchText) { oldValue, newValue in
-                    
-                    if newValue.count > vm.titleCharacterLimit {
-                        searchText = String(newValue.prefix(vm.titleCharacterLimit))
+                    withAnimation(.default) {
+                        if newValue.count > vm.titleCharacterLimit {
+                            searchText = String(newValue.prefix(vm.titleCharacterLimit))
+                        }
                     }
+                    
                     
                 }
                 .overlay(alignment: .trailing) {
