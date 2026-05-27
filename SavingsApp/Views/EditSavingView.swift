@@ -73,6 +73,13 @@ struct EditSavingView: View {
 //                        .frame(width: 85, alignment: .leading)
                     TextField("Insert Title", text: $title, prompt: Text("Insert Title").foregroundStyle(.gray))
                         .font(.title3)
+                        .onChange(of: title) { oldValue, newValue in
+                            
+                            if newValue.count > 20 {
+                                title = String(newValue.prefix(20))
+                            }
+                            
+                        }
 //                        .foregroundStyle(title == "Untitled" ? .gray : .white)
                     
                 }
