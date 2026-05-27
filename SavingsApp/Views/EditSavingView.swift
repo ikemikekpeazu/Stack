@@ -26,7 +26,7 @@ struct EditSavingView: View {
     init(savingEntity: SavingEntity) {
         self.savingEntity = savingEntity
         let category = Category(rawValue: savingEntity.category ?? "") ?? .general
-        _amount = State(initialValue: "\(savingEntity.amount)")
+        _amount = State(initialValue: Self.formattedAmountString(from: savingEntity.amount))
         _title = State(initialValue: savingEntity.title ?? "")
         _category = State(initialValue: category)
         _date = State(initialValue: savingEntity.date ?? Date())
@@ -181,6 +181,14 @@ struct EditSavingView: View {
                 }
             }
             amount = newAmount
+        }
+    }
+    static func formattedAmountString(from value: Double) -> String {
+        
+        if value.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(Int(value))
+        } else {
+            return String(format: "%.2f", value)
         }
     }
 }
