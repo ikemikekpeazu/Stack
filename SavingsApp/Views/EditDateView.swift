@@ -11,9 +11,13 @@ import CoreData
 
 struct EditDateView: View {
     @EnvironmentObject var vm: SavingsViewModel
-    @State var startDate: Date = Date()
-    @State var endDate: Date = Date()
+    @State var newStartDate: Date = Date()
+    @State var newEndDate: Date = Date()
     @Environment(\.dismiss) var dismiss
+    
+    var isValidRange: Bool {
+        newStartDate <= newEndDate
+    }
     
     var body: some View {
         ZStack {
@@ -33,7 +37,7 @@ struct EditDateView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                         Spacer()
-                        DatePicker("", selection: $vm.startDate, displayedComponents: [.date])
+                        DatePicker("", selection: $newStartDate, displayedComponents: [.date])
                             .labelsHidden()
                             .tint(Color.theme.blue1)
                     }
@@ -42,7 +46,7 @@ struct EditDateView: View {
                             .font(.title3)
                             .fontWeight(.semibold)
                         Spacer()
-                        DatePicker("", selection: $vm.endDate, displayedComponents: [.date])
+                        DatePicker("", selection: $newEndDate, displayedComponents: [.date])
                             .labelsHidden()
                             .tint(Color.theme.blue1)
                     }
@@ -51,8 +55,8 @@ struct EditDateView: View {
                 
                 Button {
                     withAnimation {
-//                        vm.startDate = startDate
-//                        vm.endDate = endDate
+                        vm.startDate = newStartDate
+                        vm.endDate = newEndDate
                         dismiss()
                     }
                 } label: {
@@ -65,8 +69,9 @@ struct EditDateView: View {
                     .background(Color.theme.blue1)
                     .foregroundColor(Color.white)
                     .cornerRadius(25)
-                        
                 }
+                .disabled(!isValidRange)
+                .opacity(isValidRange ? 1 : 0.5)
                 .padding(.horizontal)
                 .padding(.bottom, 20)
             }
