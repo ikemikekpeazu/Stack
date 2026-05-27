@@ -17,6 +17,13 @@ struct SearchBarView: View {
             TextField("", text: $searchText, prompt: Text("Search Title").foregroundStyle(Color(.systemGray)))
                 .focused($isSearching)
                 .disableAutocorrection(true)
+                .onChange(of: searchText) { oldValue, newValue in
+                    
+                    if newValue.count > 20 {
+                        searchText = String(newValue.prefix(20))
+                    }
+                    
+                }
                 .overlay(alignment: .trailing) {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(Color(.systemGray))
