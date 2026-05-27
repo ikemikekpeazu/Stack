@@ -175,6 +175,17 @@ struct AddSavingView: View {
             amount = newAmount
         }
     }
+    
+    private var isValidAmount: Bool {
+        if amount.isEmpty {
+            return false
+        }
+        
+        if amount.hasSuffix(".") {
+            return false
+        }
+        return true
+    }
 }
 
 extension AddSavingView {
@@ -224,6 +235,8 @@ extension AddSavingView {
             .padding(.horizontal)
             .padding(.bottom, 20)
             .offset(y: amountEntered ? -470 : -170)
+            .disabled(!isValidAmount)
+            .opacity(isValidAmount ? 1 : 0.5)
         }
         
     }
