@@ -158,11 +158,29 @@ struct EditSavingView: View {
         } else if key == "•" {
             if !amount.contains(".") { amount += "." }
         } else {
+            let newAmount: String
+            
             if amount == "0" {
-                amount = key
+                newAmount = key
             } else {
-                amount += key
+                newAmount = amount + key
             }
+            
+            let components = newAmount.components(separatedBy: ".")
+            let wholeNumberPart = components[0]
+            
+            if wholeNumberPart.count > 6 {
+                return
+            }
+            
+            if components.count > 1 {
+                let decimalPart = components[1]
+                
+                if decimalPart.count > 2 {
+                    return
+                }
+            }
+            amount = newAmount
         }
     }
 }

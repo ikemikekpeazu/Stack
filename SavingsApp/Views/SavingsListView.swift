@@ -231,7 +231,7 @@ struct SavingsListView: View {
             return calendar.isDate(date, equalTo: now, toGranularity: .month)
         case .year:
             return calendar.isDate(date, equalTo: now, toGranularity: .year)
-        case .total:
+        case .allTime:
             return true
         case .customRange:
 //            return vm.startDate <= date && vm.endDate >= date

@@ -13,7 +13,7 @@ enum DateFilter: Hashable, CaseIterable {
     case week
     case month
     case year
-    case total
+    case allTime
     case customRange
     
     var title: String {
@@ -30,8 +30,8 @@ enum DateFilter: Hashable, CaseIterable {
         case .year:
             return "This Year"
             
-        case .total:
-            return "Total"
+        case .allTime:
+            return "All Time"
 
 
         case .customRange:

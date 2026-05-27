@@ -23,7 +23,7 @@ struct HomeView: View {
             .reduce(0) { $0 + $1.amount }
     }
     
-    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .total]
+    let homeFilters: [DateFilter] = [.today, .week, .month, .year, .allTime]
     
 //    @State private var dateFilter: DateFilter = DateFilter.week
     
@@ -121,7 +121,7 @@ struct HomeView: View {
             return calendar.isDate(date, equalTo: now, toGranularity: .month)
         case .year:
             return calendar.isDate(date, equalTo: now, toGranularity: .year)
-        case .total:
+        case .allTime:
             return true
         default:
             return true

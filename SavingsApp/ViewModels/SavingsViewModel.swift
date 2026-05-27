@@ -16,7 +16,7 @@ class SavingsViewModel: ObservableObject {
     @Published var startDate: Date = Date()
     @Published var endDate: Date = Date()
     @Published var homeDateFilter: DateFilter = DateFilter.month
-    @Published var listDateFilter: DateFilter = DateFilter.total
+    @Published var listDateFilter: DateFilter = DateFilter.allTime
     @Published var categoryFilter: Category = Category.allCategories
     @Published var searchText: String = ""
     
