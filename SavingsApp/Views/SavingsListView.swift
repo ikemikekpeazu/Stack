@@ -81,8 +81,9 @@ struct SavingsListView: View {
             VStack {
                 HStack {
                     Text("$\(totalSaved, specifier: "%.2f")")
-                        .font(.largeTitle)
-                        .fontWeight(.semibold)
+                        .font(.system(size: 34, weight: .bold))
+                        .minimumScaleFactor(0.7)
+                        .lineLimit(1)
                         .foregroundStyle(Color.white)
                     Spacer()
 //                    Text("This Month")
