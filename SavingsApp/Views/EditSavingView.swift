@@ -156,7 +156,17 @@ struct EditSavingView: View {
                 amount = "0"
             }
         } else if key == "•" {
-            if !amount.contains(".") { amount += "." }
+            if !amount.contains(".") {
+                
+                let components = amount.components(separatedBy: ".")
+                let wholeNumberPart = components[0]
+                
+                if wholeNumberPart.count > 4 {
+                    return
+                }
+                amount += "."
+            }
+            
         } else {
             let newAmount: String
             
@@ -169,7 +179,7 @@ struct EditSavingView: View {
             let components = newAmount.components(separatedBy: ".")
             let wholeNumberPart = components[0]
             
-            if wholeNumberPart.count > 6 {
+            if wholeNumberPart.count > 4 {
                 return
             }
             
