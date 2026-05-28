@@ -77,11 +77,6 @@ struct SavingsListView: View {
             // Background Layer
             Color.theme.blue1.ignoresSafeArea()
             // Content Layer
-            
-            
-            
-            
-            
             VStack {
                 HStack {
                     Text("$\(totalSaved, specifier: "%.2f")")

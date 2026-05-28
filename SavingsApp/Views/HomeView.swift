@@ -79,21 +79,25 @@ struct HomeView: View {
                             showAddSheet = true
                         } label: {
                             Text("Add Savings")
+                                .font(.headline)
                                 .foregroundStyle(Color.white)
                                 .fontWeight(.semibold)
-                                .frame(width: 180, height: 50)
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
                                 .background(Color.theme.blue1)
                                 .cornerRadius(30)
                                 .padding(.leading, 10)
                         }
-                        Spacer()
+                        Spacer(minLength: 20)
                         NavigationLink {
                             SavingsListView()
                         } label: {
                             Text("View Savings")
+                                .font(.headline)
                                 .foregroundStyle(Color.white)
                                 .fontWeight(.semibold)
-                                .frame(width: 180, height: 50)
+                                .frame(height: 50)
+                                .frame(maxWidth: .infinity)
                                 .background(Color.theme.blue4)
                                 .cornerRadius(30)
                                 .padding(.trailing, 10)

@@ -21,13 +21,11 @@ struct AddSavingView: View {
     // Grid configuration for the keypad
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     let keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "•", "0", "delete.left"]
-    
-
 
     var body: some View {
         ZStack(alignment: .bottom) {
             
-            Color.theme.background.ignoresSafeArea()
+            Color.theme.background.ignoresSafeArea(.keyboard)
             
             VStack {
                 Spacer()
@@ -214,8 +212,17 @@ struct AddSavingView: View {
 }
 
 extension AddSavingView {
+    
+    private var dynamicButtonHeight: CGFloat {
+        UIScreen.main.bounds.height * 0.04
+    }
+    
+    private var dynamicSpacing: CGFloat {
+        UIScreen.main.bounds.height * 0.035
+    }
+    
     private var keypad: some View {
-        LazyVGrid(columns: columns, spacing: 30) {
+        LazyVGrid(columns: columns, spacing: dynamicSpacing) {
             ForEach(keys, id: \.self) { key in
                 Button(action: {
                     handleKeyPress(key)
@@ -227,6 +234,9 @@ extension AddSavingView {
                     } else {
                         Text(key)
                             .font(.system(size: 30, weight: .medium))
+//                            .font(.title)
+//                            .fontWeight(.medium)
+                            .frame(maxWidth: .infinity, minHeight: dynamicButtonHeight)
                             .foregroundStyle(Color.theme.accent)
                     }
                 }
