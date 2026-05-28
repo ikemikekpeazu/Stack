@@ -169,14 +169,14 @@ struct SavingsListView: View {
                         .padding(.horizontal, 10)
                     Group {
                         if savings.isEmpty {
-                            EmptyStateView(imageName: "tray", title: "No items yet", subtitle: "No items yet")
+                            EmptyStateView(imageName: "tray", title: "No Savings", subtitle: "Tap below to add your first saving!")
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                         } else if filteredSavings.isEmpty && !vm.searchText.isEmpty {
-                            EmptyStateView(imageName: "magnifyingglass", title: "No search results", subtitle: "No search results")
+                            EmptyStateView(imageName: "magnifyingglass", title: "No Results for \"\(vm.searchText)\"", subtitle: "Check the spelling or try a new search")
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .transition(.opacity)
                         } else if filteredSavings.isEmpty && vm.searchText.isEmpty {
-                            EmptyStateView(imageName: "line.3.horizontal.decrease.circle", title: "Failed filtering", subtitle: "Failed filtering")
+                            EmptyStateView(imageName: "line.3.horizontal.decrease.circle", title: "No Matching Savings", subtitle: "Try a different category or date range.")
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .transition(.opacity)
                         } else {
