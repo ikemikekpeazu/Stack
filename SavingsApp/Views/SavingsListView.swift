@@ -187,7 +187,12 @@ struct SavingsListView: View {
                                         .listRowInsets(EdgeInsets())
                                         .alignmentGuide(.listRowSeparatorLeading) { d in d[.leading] }
                                         .alignmentGuide(.listRowSeparatorTrailing) { d in d[.trailing] }
-                                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                            Button(role: .destructive) {
+                                                vm.deleteSaving(entity: entity)
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
                                             Button {
                                                 vm.selectedSaving = entity
                                                 
@@ -197,12 +202,12 @@ struct SavingsListView: View {
                                             .tint(.orange)
                                         }
                                 }
-                                .onDelete { indexSet in
-                                    for index in indexSet {
-                                        let entity = savings[index]
-                                        vm.deleteSaving(entity: entity)
-                                    }
-                                }
+//                                .onDelete { indexSet in
+//                                    for index in indexSet {
+//                                        let entity = savings[index]
+//                                        vm.deleteSaving(entity: entity)
+//                                    }
+//                                }
                             }
                             .scrollContentBackground(.hidden)
                             .listStyle(.plain)
