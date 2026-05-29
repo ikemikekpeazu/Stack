@@ -238,6 +238,7 @@ struct SavingsListView: View {
         .overlay(alignment: .bottom) {
             AddButtonView(showAddSheet: $showAddSheet)
         }
+        .ignoresSafeArea(.keyboard)
 
         
             

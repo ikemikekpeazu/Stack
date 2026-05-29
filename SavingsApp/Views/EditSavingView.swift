@@ -155,6 +155,7 @@ struct EditSavingView: View {
             .padding()
             
         }
+        .ignoresSafeArea(.keyboard)
     }
 
     // Handles Key press logic
@@ -224,8 +225,16 @@ struct EditSavingView: View {
 }
 
 extension EditSavingView {
+    private var dynamicButtonHeight: CGFloat {
+        UIScreen.main.bounds.height * 0.04
+    }
+    
+    private var dynamicSpacing: CGFloat {
+        UIScreen.main.bounds.height * 0.035
+    }
+    
     private var keypad: some View {
-        LazyVGrid(columns: columns, spacing: 30) {
+        LazyVGrid(columns: columns, spacing: dynamicSpacing) {
             ForEach(keys, id: \.self) { key in
                 Button(action: {
                     handleKeyPress(key)
@@ -237,6 +246,7 @@ extension EditSavingView {
                     } else {
                         Text(key)
                             .font(.system(size: 30, weight: .medium))
+                            .frame(maxWidth: .infinity, minHeight: dynamicButtonHeight)
                             .foregroundStyle(Color.theme.accent)
                     }
                 }

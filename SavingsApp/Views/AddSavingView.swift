@@ -25,7 +25,7 @@ struct AddSavingView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             
-            Color.theme.background.ignoresSafeArea(.keyboard)
+            Color.theme.background.ignoresSafeArea()
             
             VStack {
                 Spacer()
@@ -70,6 +70,7 @@ struct AddSavingView: View {
 //                        .foregroundStyle(title == "Untitled" ? .gray : .white)
                     
                 }
+                
                 HStack{
                     Text("Category")
                         .font(.title3)
@@ -130,6 +131,7 @@ struct AddSavingView: View {
             .padding(.horizontal)
             
             
+            
         }
         .overlay(alignment: .topLeading) {
             Button {
@@ -144,7 +146,7 @@ struct AddSavingView: View {
             .padding()
             
         }
-        
+        .ignoresSafeArea(.keyboard)
     }
 
     // Handles Key press logic
