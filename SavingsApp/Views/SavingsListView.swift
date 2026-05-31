@@ -71,6 +71,16 @@ struct SavingsListView: View {
         }
     }
     
+    var customDateFontSize: CGFloat {
+        switch vm.listDateFilter {
+            
+        case .customRange:
+            return 15
+        default:
+            return 18
+        }
+    }
+    
     var body: some View {
     
         ZStack {
@@ -111,12 +121,14 @@ struct SavingsListView: View {
                             Text(displayTitle)
 //                                .font(.headline)
 //                                .fontWeight(.bold)
-                                .font(.system(size: 18, weight: .semibold))
+                                .font(.system(size: customDateFontSize, weight: .semibold))
                                 .foregroundStyle(Color.white)
                             Image(systemName: "chevron.down")
                                 .foregroundStyle(Color.theme.blue4)
                         }
                         .frame(minWidth: 200, alignment: .trailing)
+//                        .minimumScaleFactor(0.5)
+//                        .lineLimit(1)
                         
                     }
                 }

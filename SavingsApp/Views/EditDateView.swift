@@ -11,12 +11,17 @@ import CoreData
 
 struct EditDateView: View {
     @EnvironmentObject var vm: SavingsViewModel
-    @State var newStartDate: Date = Date()
-    @State var newEndDate: Date = Date()
+    @State var newStartDate: Date
+    @State var newEndDate: Date
     @Environment(\.dismiss) var dismiss
     
     var isValidRange: Bool {
         newStartDate <= newEndDate
+    }
+    
+    init() {
+        _newStartDate = State(initialValue: Date())
+        _newEndDate = State(initialValue: Date())
     }
     
     var body: some View {
@@ -90,6 +95,10 @@ struct EditDateView: View {
             }
             .padding()
             
+        }
+        .onAppear {
+            newStartDate = vm.startDate
+            newEndDate = vm.endDate
         }
         
     }
