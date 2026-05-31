@@ -75,7 +75,7 @@ struct SavingsListView: View {
         switch vm.listDateFilter {
             
         case .customRange:
-            return 15
+            return 16
         default:
             return 18
         }
@@ -123,12 +123,13 @@ struct SavingsListView: View {
 //                                .fontWeight(.bold)
                                 .font(.system(size: customDateFontSize, weight: .semibold))
                                 .foregroundStyle(Color.white)
+                                .monospacedDigit()
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
                             Image(systemName: "chevron.down")
                                 .foregroundStyle(Color.theme.blue4)
                         }
                         .frame(minWidth: 200, alignment: .trailing)
-//                        .minimumScaleFactor(0.5)
-//                        .lineLimit(1)
                         
                     }
                 }
