@@ -1,5 +1,5 @@
 # 📱 Stack
-(Soon to be in App Store, currentlly in App Store Review)
+(Soon to be in App Store, currently in App Store Review)
 ---
 
 Stack is a sleek, minimalist iOS savings tracker designed to help you effortlessly log, categorize, and monitor your financial progress in seconds. Built with a fast, numpad-first interface and powerful filtering, it gives you a clear, at-a-glance view of your growing savings over time.
