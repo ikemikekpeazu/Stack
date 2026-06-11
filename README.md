@@ -1,4 +1,4 @@
-## 📱 Stack
+# 📱 Stack
 (Soon to be in App Store, currentlly in App Store Review)
 ---
 
