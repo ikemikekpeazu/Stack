@@ -4,9 +4,10 @@
 
 Stack is a sleek, minimalist iOS savings tracker designed to help you effortlessly log, categorize, and monitor your financial progress in seconds. Built with a fast, numpad-first interface and powerful filtering, it gives you a clear, at-a-glance view of your growing savings over time.
  <p align="center">
-<img width="200" alt="CryptoHomeScreen" src="https://github.com/user-attachments/assets/51efcf19-ceb4-41f1-af2b-fb5a43e00467" hspace="20"/>
-<img width="200" alt="CryptoDetailView" src="https://github.com/user-attachments/assets/7b49dd51-7721-4229-b7aa-f565ff7e7ab4" hspace="20" />
-<img width="200" alt="AddHoldingScreen" src="https://github.com/user-attachments/assets/4d418c23-d30e-47e5-800f-695936a2e817" hspace="20"/>
+<img width="1320" height="2868" alt="01" src="https://github.com/user-attachments/assets/077bd83c-a77d-4e80-9886-6fdada3d99f9" />
+<img width="1320" height="2868" alt="02" src="https://github.com/user-attachments/assets/8acda6a9-f2f2-4a1c-840f-b30ab52e5e77" />
+<img width="1320" height="2868" alt="03" src="https://github.com/user-attachments/assets/9abcfb0b-47c6-43f7-b724-e3cc48ba4814" />
+<img width="1320" height="2868" alt="04" src="https://github.com/user-attachments/assets/a62fa6fb-fc77-47b2-9073-11576926cf78" />
 </p>
 
 ## 💻 Technologies/Architecture
