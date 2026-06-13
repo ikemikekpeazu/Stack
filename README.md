@@ -169,7 +169,7 @@ In SavingsListView file:
 <img width="652" height="175" alt="DisplayTitleVar" src="https://github.com/user-attachments/assets/86ec25ff-affa-45ed-be10-8d5f442ec80e" />
 <img width="333" height="38" alt="DateRange" src="https://github.com/user-attachments/assets/2f409df9-db74-446c-ac60-dc756fffcb17" />
 
-<br>
+<br><br>
 
 **PersistenceController:**
 
