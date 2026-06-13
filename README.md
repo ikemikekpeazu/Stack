@@ -119,4 +119,9 @@ One issue that I was having in my app came from my initial Core Data setup withi
 
 <img width="512" height="48" alt="FetchRequest" src="https://github.com/user-attachments/assets/505c286f-0f33-44e9-afed-c5584e73e749" />
 
+What I did though to try to still keep the MVVM and have as light a view file as possible was to still keep the functions/logic for adding, deleting, updating within the ViewModel file. So this gave me the benefits of having the @FetchRequest within the view while still keeping somewhat clean architecture.
+
+So as I mentioned above with the design of the add saving screen, one of the challenges that I had to face was keeping the CashApp-like keypad while still making room for the additional saving information that the user needed to add. So had the keypad “open and close”.
+
+<img width="200" alt="Add flow" src="https://github.com/user-attachments/assets/b671624f-d330-4250-9e97-2eac2d4da792" />
 
