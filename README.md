@@ -164,6 +164,7 @@ So how I coded this was I had start and end date variables in my viewModel that 
 
 To get the menu to show these dates, and not just the title like this month, this week, etc., I made the displayTitle variable for the label of the menu a computed property and made it a switch on the view model DateFilter and created a custom string that showed the start date to the end date if the filter was on .customRange.
 
+In SavingsListView file:
 <img width="652" height="175" alt="DisplayTitleVar" src="https://github.com/user-attachments/assets/86ec25ff-affa-45ed-be10-8d5f442ec80e" />
 <img width="333" height="38" alt="DateRange" src="https://github.com/user-attachments/assets/2f409df9-db74-446c-ac60-dc756fffcb17" />
 
