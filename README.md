@@ -106,7 +106,7 @@ When the user presses delete, it deletes the item from the list. When the user p
 I also used Mobbin/Figma a lot for my empty states in the list, just to get a feel for what typical ones look like. My empty states also had to be different depending on whether there were no items in the list at all, if the user selected a filter combination with no savings, or if the user searched for something that brought up no titles:
 
 <img width="200" alt="NoSavings" src="https://github.com/user-attachments/assets/22339544-ed5b-4c5f-afe3-9ee8ef72e093" />
-<img width="200" alt="NoFilteredSavings" src="https://github.com/user-attachments/assets/62982b5d-ad1b-406a-93fd-ec115ddabd4b" />
+<img width="200" alt="NoFilteredSavings1" src="https://github.com/user-attachments/assets/683bc91f-2d40-4f25-aa1b-c28b4bd6d187" />
 <img width="200" alt="NoSearchedSavings" src="https://github.com/user-attachments/assets/646febd5-2b86-41e3-a01b-77062128fae3" />
 
 
