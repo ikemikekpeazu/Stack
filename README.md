@@ -93,4 +93,6 @@ I knew that I wanted a search bar at the top so I also looked into how people im
 
 <img width="200" alt="TheAthletic" src="https://github.com/user-attachments/assets/bd793717-07b5-45af-8b8e-70624e41b374" />
 
+Taking these designs as inspiration, I then created my own. I knew that I wanted a total number in the top left so that the user could see their totals, along with a toggle for time frames in the top right. And then right under that, I had the black portion with the savings. I rounded the top corners of it to give it more of a card feel sitting on top of the light blue. Then I had Savings as the title in the left along with a category toggle filter in the right. Search bar right under it, and then the list of savings. For the design of an individual list item, I took a lot of inspiration from Wanderlog since I really just liked how that one was laid out. I chose to have the date be a little longer and include the year so that the user could more precisely view savings from different years if they wanted to. From this app screen, I also got inspiration to add a hovering add saving button on the bottom. And all those things combined created a comprehensive screen where the user can complete all actions necessary within the app: they can view their savings totals in detail, they can see all their savings in detail, and they can add savings.
+
 
