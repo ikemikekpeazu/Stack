@@ -129,3 +129,5 @@ How I designed this in code was I created an amountEntered state variable to mon
 
 <img height="400" alt="NextButtonCode" src="https://github.com/user-attachments/assets/9c9cd170-feb2-4198-859c-e38818776a5e" />
 <img width="800" alt="KeypadCode" src="https://github.com/user-attachments/assets/0fa32026-0ba4-4a3f-8479-d5181ad8d807" />
+
+And then under the button, I had a VStack that contained HStacks with the areas to enter additional info. And then on the entire VStack, I had its opacity and offset change based on the amountEntered State variable so that it would appear as though it was coming onto the screen after the user entered an amount.
