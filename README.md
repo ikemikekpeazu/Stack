@@ -144,6 +144,6 @@ And then on the edit savings view screen (where the user edits a saving), I used
 
 When designing the UI for both my home screen and my list screen, I knew that it would be a great feature to have the user be able to toggle between different time windows (day, week, month, year etc.) in order to get a closer look at their savings at different points. So I used an enum for this. But I wanted the toggle on the home screen to not offer a custom date option but for the toggle on the detail screen to offer one. So instead of creating two separate enums, I put all the cases, including the custom one, into the DateFilter enum, and then on the home screen view, created an array that just contained the main cases that I wanted to appear on the home screen. And then on the detail list toggle I used allCases.
 
-<img width="801" height="536" alt="DateFilterEnum" src="https://github.com/user-attachments/assets/f42d89d4-f2e1-43df-9acb-82e821362bff" />
+<img height="300" alt="DateFilterEnum" src="https://github.com/user-attachments/assets/f42d89d4-f2e1-43df-9acb-82e821362bff" />
 <img width="650" height="127" alt="HomeDatePicker" src="https://github.com/user-attachments/assets/12616888-0271-461a-a554-fd23a014e433" />
 <img width="778" height="220" alt="ListDatePicker" src="https://github.com/user-attachments/assets/08b9925c-f09e-4133-be45-9f059892f02c" />
