@@ -80,7 +80,7 @@ I also coded this screen in a way that there’s default entries for title, cate
 
 <img width="200" alt="untitled" src="https://github.com/user-attachments/assets/6a7b281f-54c8-447a-9749-0ff07894e8da" />
 
-For the View Savings screen with the more detailed view of all the savings, I thought a lot about the design of this screen as well. I used Mobbin to look at a bunch of different types of list screens for financial apps and see what resonated with me. I used Figma a bit as well to lay out multiple screens in parallel. I liked the list screen in the Wanderlog app and how it had a total section at the top along with a list section/card at the bottom. I also thought that the design of the list items and the icons was very clean.
+For the View Savings screen with the more detailed view of all the savings, I thought a lot about the design of this screen as well. I used Mobbin to look at a bunch of different types of list screens for financial apps and see what resonated with me. I used Figma a bit as well to lay out multiple screens in parallel. I liked the list screen in the Wanderlog app and how it had a total section at the top along with a list section/card at the bottom. I also thought that the design of the list items and the icons was very clean:
 
 <img width="200" alt="Wanderlog" src="https://github.com/user-attachments/assets/dd15d779-f734-4cdc-ac14-bff427eedbff" />
 
