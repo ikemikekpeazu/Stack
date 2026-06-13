@@ -159,11 +159,7 @@ So on the detail screen, when the user selects a custom date range, it pulls up 
 So how I coded this was I had start and end date variables in my viewModel that were connected to the label on the menu picker in the top right and the filtering for the list of savings. For the edit date sheet view file, I create newStartDate and newEndDate state variables that set equal to the view model start and end date variables onAppear. This guaranteed that when the user was flipping different dates and checking within the sheet, that it didn’t show up on the main list view. I had an isValidRange computed variable that checked whether the selected start date was before the selected end date. This was then connected to a modifier that disabled the confirm button and also slightly lowered its opacity to reflect that it couldn’t be pressed as a result. And then, when the user pressed confirm, the viewModel start and end dates were set equal to the local temporary start and end dates in the sheet view. 
 
 <img width="415" height="175" alt="EditDateViewVariables" src="https://github.com/user-attachments/assets/0f682b6d-fe3e-4ed3-9c84-52b1f5de9eb7" />
-
-
 <img width="365" height="110" alt="EditDateOnAppear" src="https://github.com/user-attachments/assets/769a2db8-ba47-4fe1-8ef6-e1285547be03" />
-
-
 <img width="291" height="367" alt="EditDateConfirmButton" src="https://github.com/user-attachments/assets/12624293-f1e8-4420-b19d-b9eefb61e282" />
 
 
