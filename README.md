@@ -1,4 +1,3 @@
-<img width="1320" height="2868" alt="03" src="https://github.com/user-attachments/assets/9b86ece6-49df-49f4-b6fd-fdd2523858cc" />
 # 📱 Stack
 (Soon to be in App Store, currently in App Store Review)
 ---
