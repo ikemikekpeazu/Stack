@@ -97,3 +97,8 @@ Taking these designs as inspiration, I then created my own. I knew that I wanted
 
 <img width="200" alt="ListScreen" src="https://github.com/user-attachments/assets/483b7927-2d22-4032-9974-f1ee80e4ab91" />
 
+I also had a swipe to edit and delete feature. I initially had edit and delete on opposite sides but I decided to put them both on the same side since I thought that that would make it more efficient for the user since all of the options were in one place and also, it’s already iPhone users natural tendency to swipe left in order to delete something in a list, so I thought putting the edit button there along with it makes sure that it doesn’t get lost in the UI.
+
+When the user presses delete, it deletes the item from the list. When the user presses edit, a sheet pops up. And when it pops up, it pops up with the same UI as the add savings screen, but, it pops up with the keypad folded closed and the additional info visible – and then if the user wants to edit the amount, they can press Edit Amount and open the keypad. So I thought this was cool because if gave like an accordion effect; user wants to add a saving, so they can add the amount then add additional info – user wants to edit a saving, so they can edit the additional info or go back and edit the amount. I think it also breeds familiarity for the user because the add screen and edit screen UI are basically identical, so they can focus less on presentation and more on entering the correct info.
+
+<img width="200" alt="Edit flow" src="https://github.com/user-attachments/assets/da8ab14e-5468-4d39-af23-44e7ae265359" />
