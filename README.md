@@ -1,3 +1,4 @@
+<img width="1320" height="2868" alt="03" src="https://github.com/user-attachments/assets/9b86ece6-49df-49f4-b6fd-fdd2523858cc" />
 # 📱 Stack
 (Soon to be in App Store, currently in App Store Review)
 ---
@@ -71,4 +72,8 @@ For the Add Savings button, I wanted it to pull up a sheet because I thought tha
 <img width="200" alt="CashAppHomeScreen" src="https://github.com/user-attachments/assets/f73150a5-2ffc-46af-b105-8d04f6095804" />
 
 I wanted to implement this into my app as well, but the challenge was that, in my app, the user didn’t just have to enter an amount, they had to enter a title for the saving, category for the saving, and date – so I couldn’t just fit all of that information into the front screen of add savings screen while still having the full key pad. What CashApp does is that after the user enters an amount on that keypad, it pulls up a sheet for the user to add additional info. But my add savings screen was already within a sheet, so adding a sheet on top of a sheet I thought would be a bit heavy and confusing. So what I did was I kept the full key pad for when the user enters the amount, and then when the user hits next, the keypad folds closed and gives space to add additional information along with an add button that appears under it. If the user wants to edit their amount again, they can press the back button and the keypad reappears. 
+
+<img width="200" alt="03" src="https://github.com/user-attachments/assets/06e3ebc6-235e-4a12-a1b6-9050715338ce" />
+<img width="200" alt="04" src="https://github.com/user-attachments/assets/3500407e-5bdc-4d07-a361-865d12a817b6" />
+
 
