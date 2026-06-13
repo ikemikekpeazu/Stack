@@ -62,3 +62,4 @@ So I realized something. The main reason why saving can be so challenging is tha
 
 When thinking about how I would design the app, I wanted to design to feel super simple and light – where a user could quickly add their savings and see their savings. I knew that I didn’t want to have too many colors. I decided to use a blue theme throughout, since blue is my favorite color and the color blue also evokes a sense of trust, security, and reliability. So blue was the only color in the app outside of black, white, and system grays. The front screen was really just something that I envisioned in my head for the app.
 
+<img width="200" alt="HomeScreen" src="https://github.com/user-attachments/assets/fd233f1e-8831-4e9a-9a8d-2c84fd47b547" />
