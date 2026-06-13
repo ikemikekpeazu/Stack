@@ -169,6 +169,9 @@ In SavingsListView file:
 <img width="652" height="175" alt="DisplayTitleVar" src="https://github.com/user-attachments/assets/86ec25ff-affa-45ed-be10-8d5f442ec80e" />
 <img width="333" height="38" alt="DateRange" src="https://github.com/user-attachments/assets/2f409df9-db74-446c-ac60-dc756fffcb17" />
 
+
 **PersistenceController:**
 
 Another challenge that I faced while building this app out at first as well was figuring out a way to test it on the preview. Since the app used Core Data, I had to figure out a way to have the app function on the preview in order for me to test it, while still working on the simulator. So in my PersistenceController I created a controller singleton for the app named shared and then one for the preview called preview, and I set inMemory = true for that one so that Core Data created a container for it that only existed in RAM and never saves to disk. I was also able to load some sample savings into this container as well. Then in my app, I passed in a context as a parameter, which allowed me to select my shared container viewContext for the main app on the simulator and then my preview container viewContext for the preview.
+
+
