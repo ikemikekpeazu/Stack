@@ -132,5 +132,6 @@ How I designed this in code was I created an amountEntered state variable to mon
 
 And then under the button, I had a VStack that contained HStacks with the areas to enter additional info. And then on the entire VStack, I had its opacity and offset change based on the amountEntered State variable so that it would appear as though it was coming onto the screen after the user entered an amount.
 
+Modifiers on VStack:
 <img width="739" height="79" alt="ModifiersOnVstack" src="https://github.com/user-attachments/assets/a8dd8a05-35be-4f0a-aa06-f775e8caf53c" />
 
