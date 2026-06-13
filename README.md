@@ -87,10 +87,10 @@ For the View Savings screen with the more detailed view of all the savings, I th
 
 I knew that I wanted a search bar at the top so I also looked into how people implemented that. Here are some key ones that I looked at from different apps:
 
-<img width="99" height="225" alt="Ubank" src="https://github.com/user-attachments/assets/41515ac3-b12c-4323-8fe1-56bde436420c" />
+<img width="200" alt="Ubank" src="https://github.com/user-attachments/assets/41515ac3-b12c-4323-8fe1-56bde436420c" />
 
-<img width="99" height="224" alt="1Password" src="https://github.com/user-attachments/assets/20233ac0-3970-412f-8b7f-95ebe581b212" />
+<img width="200" alt="1Password" src="https://github.com/user-attachments/assets/20233ac0-3970-412f-8b7f-95ebe581b212" />
 
-<img width="97" height="225" alt="TheAthletic" src="https://github.com/user-attachments/assets/bd793717-07b5-45af-8b8e-70624e41b374" />
+<img width="200" alt="TheAthletic" src="https://github.com/user-attachments/assets/bd793717-07b5-45af-8b8e-70624e41b374" />
 
 
