@@ -74,7 +74,7 @@ I wanted to implement this into my app as well, but the challenge was that, in m
 
 <img width="200" alt="EnterAmountScreen" src="https://github.com/user-attachments/assets/9dc751e0-a4fc-4762-99dc-589a4163aa43" />
 <img width="200" alt="DetailScreen1" src="https://github.com/user-attachments/assets/cec7659e-c62b-416d-8f77-270803fb75ea" />
-<img width="295" height="640" alt="Add flow" src="https://github.com/user-attachments/assets/b671624f-d330-4250-9e97-2eac2d4da792" />
+<img width="200" alt="Add flow" src="https://github.com/user-attachments/assets/b671624f-d330-4250-9e97-2eac2d4da792" />
 
 
 
