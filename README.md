@@ -152,3 +152,6 @@ When designing the UI for both my home screen and my list screen, I knew that it
 <img width="436" height="110" alt="ListDatePicker1" src="https://github.com/user-attachments/assets/e5f738c8-aaf6-4b42-ae69-b09f41c01e37" />
 </p>
 
+So on the detail screen, when the user selects a custom date range, it pulls up a sheet for them to select custom start and end dates. From a UI perspective, there were a couple things that I wanted to make sure happened with this screen. I wanted the start and end dates to start off as today for the first time the user selects custom times, but for each time after that for the sheet to open up with what dates were selected last. I also wanted the date range in the top right on the detail screen to stay still until the user actually confirmed a new range. I also wanted the app to not allow users to select date ranges that don’t make sense, meaning having a start date that occurs later than the end date:
+
+<img width="200" alt="EditDateFlow" src="https://github.com/user-attachments/assets/fb9f8771-eb70-4494-88a4-59552af6cf36" />
