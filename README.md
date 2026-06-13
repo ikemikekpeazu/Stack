@@ -121,6 +121,8 @@ One issue that I was having in my app came from my initial Core Data setup withi
 
 What I did though to try to still keep the MVVM and have as light a view file as possible was to still keep the functions/logic for adding, deleting, updating within the ViewModel file. So this gave me the benefits of having the @FetchRequest within the view while still keeping somewhat clean architecture.
 
+**AddSavingsView:**
+
 So as I mentioned above with the design of the add saving screen, one of the challenges that I had to face was keeping the CashApp-like keypad while still making room for the additional saving information that the user needed to add. So had the keypad “open and close”.
 
 <img width="200" alt="Add flow" src="https://github.com/user-attachments/assets/b671624f-d330-4250-9e97-2eac2d4da792" />
@@ -135,4 +137,6 @@ And then under the button, I had a VStack that contained HStacks with the areas 
 Modifiers on VStack:
 
 <img width="739" height="79" alt="ModifiersOnVstack" src="https://github.com/user-attachments/assets/a8dd8a05-35be-4f0a-aa06-f775e8caf53c" />
+
+And then on the edit savings view screen (where the user edits a saving), I used the exact same logic but just had the screen start with amountEntered already true.
 
