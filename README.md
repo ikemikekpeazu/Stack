@@ -76,5 +76,8 @@ I wanted to implement this into my app as well, but the challenge was that, in m
 <img width="200" alt="DetailScreen1" src="https://github.com/user-attachments/assets/cec7659e-c62b-416d-8f77-270803fb75ea" />
 <img width="200" alt="Add flow" src="https://github.com/user-attachments/assets/b671624f-d330-4250-9e97-2eac2d4da792" />
 
+I also coded this screen in a way that there’s default entries for title, category and date, so maybe if the user is in a pinch somewhere and just wants to add a saving quickly and then edit it later, they can quickly type in the amount, and then hit enter and it gets added to their list:
+
+<img width="200" alt="untitled" src="https://github.com/user-attachments/assets/6a7b281f-54c8-447a-9749-0ff07894e8da" />
 
 
