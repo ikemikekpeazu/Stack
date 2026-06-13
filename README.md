@@ -162,4 +162,8 @@ So how I coded this was I had start and end date variables in my viewModel that 
 <img width="365" height="110" alt="EditDateOnAppear" src="https://github.com/user-attachments/assets/769a2db8-ba47-4fe1-8ef6-e1285547be03" />
 <img width="291" height="367" alt="EditDateConfirmButton" src="https://github.com/user-attachments/assets/12624293-f1e8-4420-b19d-b9eefb61e282" />
 
+To get the menu to show these dates, and not just the title like this month, this week, etc., I made the displayTitle variable for the label of the menu a computed property and made it a switch on the view model DateFilter and created a custom string that showed the start date to the end date if the filter was on .customRange.
+
+<img width="652" height="175" alt="DisplayTitleVar" src="https://github.com/user-attachments/assets/86ec25ff-affa-45ed-be10-8d5f442ec80e" />
+<img width="333" height="38" alt="DateRange" src="https://github.com/user-attachments/assets/2f409df9-db74-446c-ac60-dc756fffcb17" />
 
