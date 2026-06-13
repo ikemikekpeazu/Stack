@@ -109,4 +109,14 @@ I also used Mobbin/Figma a lot for my empty states in the list, just to get a fe
 <img width="200" alt="NoFilteredSavings1" src="https://github.com/user-attachments/assets/683bc91f-2d40-4f25-aa1b-c28b4bd6d187" />
 <img width="200" alt="NoSearchedSavings" src="https://github.com/user-attachments/assets/646febd5-2b86-41e3-a01b-77062128fae3" />
 
+## ⚙️ Technical Discussion of App
+
+**Architecture:**
+
+In terms of architecture, the app uses standard MVVM. I had a model for the individual savings, a viewModel to manage all the different logic with the savings(creating a list of them, adding up totals, filtering etc.) and then used view files to display the data. In order to have the users savings persist on device between sessions, I used Core Data to create a model of each saving. I had a savingEntity and then made attributes for amount, category, date, id, and title. I created a PersistenceController to house the NSPersistentContainer. I created a singleton of it then accessed it within the viewModel, and then had add, update, delete functions to manipulate the entities.
+
+One issue that I was having in my app came from my initial Core Data setup within my app. So initially, I was using a fetchSavings() function within my viewModel to fetch savings right on the init, and then having an Published var array of savings that then flowed into the view list. But the problem I was having was that the view wasn’t updating/refreshing as quickly as necessary. I was testing the edit functionality, and I would edit an item, then press confirm and the item would still be showing the old info in the UI – and it was only when I would click away to another screen then come back that it would update. So I was troubleshooting this for a while, and the solution I came up with was to use an @FetchRequest directly on the view file. So what this does is that it lets the SwiftUI view subscribe directly to Core Data changes without needing the ViewModel to manually fetch and publish the data. So when objects are added/delete/edited, the fetch reruns automatically and the view refreshes automatically. This ultimately worked. The main tradeoff with it though was that it meant that I had to put more code into the view files, specifically code that was not entirely related to the pure action of just showing data – this was more of a data fetching thing. Here’s the code I put in the views:
+
+<img width="512" height="48" alt="FetchRequest" src="https://github.com/user-attachments/assets/505c286f-0f33-44e9-afed-c5584e73e749" />
+
 
