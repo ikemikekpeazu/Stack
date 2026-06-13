@@ -50,4 +50,8 @@ The app will be in the app store soon (still in review currently), but here are 
 
 <br>
 
+## 🛠️ Creation Process
+
+**Background:**
+To give a bit of backstory on the creation of this app, this was probably the first app idea that I had in mind to create when I first started learning iOS. I noticed while I was in school that I would make these little purchases – maybe buying a snack here or there, ordering clothes, or taking an Uber instead of the subway. And in the moment, the purchases felt seemingly innocuous, but I would look at my account at the end of the month and see that they could add up to something significant. 
 
