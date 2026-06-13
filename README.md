@@ -102,3 +102,11 @@ I also had a swipe to edit and delete feature. I initially had edit and delete o
 When the user presses delete, it deletes the item from the list. When the user presses edit, a sheet pops up. And when it pops up, it pops up with the same UI as the add savings screen, but, it pops up with the keypad folded closed and the additional info visible – and then if the user wants to edit the amount, they can press Edit Amount and open the keypad. So I thought this was cool because if gave like an accordion effect; user wants to add a saving, so they can add the amount then add additional info – user wants to edit a saving, so they can edit the additional info or go back and edit the amount. I think it also breeds familiarity for the user because the add screen and edit screen UI are basically identical, so they can focus less on presentation and more on entering the correct info.
 
 <img width="200" alt="Edit flow" src="https://github.com/user-attachments/assets/da8ab14e-5468-4d39-af23-44e7ae265359" />
+
+I also used Mobbin/Figma a lot for my empty states in the list, which were different depending on whether there were no items in the list at all, if the user selected a filter combination with no savings, or if the user searched for something that brought up no titles:
+
+<img width="200" alt="NoSavings" src="https://github.com/user-attachments/assets/22339544-ed5b-4c5f-afe3-9ee8ef72e093" />
+<img width="200" alt="NoFilteredSavings" src="https://github.com/user-attachments/assets/62982b5d-ad1b-406a-93fd-ec115ddabd4b" />
+<img width="200" alt="NoSearchedSavings" src="https://github.com/user-attachments/assets/646febd5-2b86-41e3-a01b-77062128fae3" />
+
+
