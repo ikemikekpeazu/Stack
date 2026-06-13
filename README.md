@@ -103,7 +103,7 @@ When the user presses delete, it deletes the item from the list. When the user p
 
 <img width="200" alt="Edit flow" src="https://github.com/user-attachments/assets/da8ab14e-5468-4d39-af23-44e7ae265359" />
 
-I also used Mobbin/Figma a lot for my empty states in the list, which were different depending on whether there were no items in the list at all, if the user selected a filter combination with no savings, or if the user searched for something that brought up no titles:
+I also used Mobbin/Figma a lot for my empty states in the list, just to get a feel for what typical ones look like. My empty states also had to be different depending on whether there were no items in the list at all, if the user selected a filter combination with no savings, or if the user searched for something that brought up no titles:
 
 <img width="200" alt="NoSavings" src="https://github.com/user-attachments/assets/22339544-ed5b-4c5f-afe3-9ee8ef72e093" />
 <img width="200" alt="NoFilteredSavings" src="https://github.com/user-attachments/assets/62982b5d-ad1b-406a-93fd-ec115ddabd4b" />
