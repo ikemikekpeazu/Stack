@@ -63,3 +63,11 @@ So I realized something. The main reason why saving can be so challenging is tha
 When thinking about how I would design the app, I wanted to design to feel super simple and light – where a user could quickly add their savings and see their savings. I knew that I didn’t want to have too many colors. I decided to use a blue theme throughout, since blue is my favorite color and the color blue also evokes a sense of trust, security, and reliability. So blue was the only color in the app outside of black, white, and system grays. The front screen was really just something that I envisioned in my head for the app.
 
 <img width="200" alt="HomeScreen" src="https://github.com/user-attachments/assets/fd233f1e-8831-4e9a-9a8d-2c84fd47b547" />
+
+So the front screen has the amount saved, allows the user to toggle time frames, and then there’s a button to add savings, and a button to view more details.
+
+For the Add Savings button, I wanted it to pull up a sheet because I thought that would feel the most fluid. For the add saving screen itself, I knew that I wanted it to be something where the user could add a saving in just a couple presses. I’ve always really liked the Cash App design/flow for adding an amount, and how the keypad is just there to immediately begin typing:
+
+<img width="103" height="224" alt="CashAppHomeScreen" src="https://github.com/user-attachments/assets/f73150a5-2ffc-46af-b105-8d04f6095804" />
+
+I wanted to implement this into my app as well, but the challenge was that, in my app, the user didn’t just have to enter an amount, they had to enter a title for the saving, category for the saving, and date – so I couldn’t just fit all of that information into the front screen of add savings screen while still having the full key pad. What CashApp does is that after the user enters an amount on that keypad, it pulls up a sheet for the user to add additional info. But my add savings screen was already within a sheet, so adding a sheet on top of a sheet I thought would be a bit heavy and confusing. So what I did was I kept the full key pad for when the user enters the amount, and then when the user hits next, the keypad folds closed and gives space to add additional information along with an add button that appears under it. If the user wants to edit their amount again, they can press the back button and the keypad reappears. 
